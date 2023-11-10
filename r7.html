@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Assignment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+
+<body>
+   
+<pre class="text-small">
+
+        #include &lt;stdio.h&gt;
+
+        int sumDigits(int number);
+        
+        int main() {
+            int number;
+        
+            printf("Enter a number: ");
+            scanf("%d", &number);
+        
+            int result = sumDigits(number);
+        
+            printf("Sum of digits: %d\n", result);
+        
+            return 0;
+        }
+        
+        int sumDigits(int number) {
+            if (number == 0) {
+                return 0;
+            }
+        
+            return (number % 10) + sumDigits(number / 10);
+        }
+        
+</pre>
+<pre class="text-small">
+<b class="text-big">Output:</b>
+
+Enter a number: 2100
+Sum of digits: 3
+
+</pre>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <h1>27. DISPLAY THE STRING ON THE OUTPUT SCREEN BUT ASK THE TEXT ALIGNMENT OPTION GIVEN BY THE USER (1 FOR LEFT,
+                2 FOR CENTER, 3 RIGHT)</h1>
+            #include &lt;stdio.h&gt;
+                #include &lt;string.h&gt;
+                
+                int main() {
+                    char text[100];
+                    int alignment;
+                
+                    // Input
+                    printf("Enter a string: ");
+                    fgets(text, sizeof(text), stdin);
+                
+                    // Remove trailing newline character
+                    text[strcspn(text, "\n")] = '\0';
+                
+                    // Input alignment choice
+                    printf("Choose text alignment (1 for left, 2 for center, 3 for right): ");
+                    scanf("%d", &alignment);
+                
+                    // Display text based on alignment choice
+                    int len = strlen(text);
+                    switch (alignment) {
+                        case 1: // Left alignment
+                            printf("%s\n", text);
+                            break;
+                        case 2: // Center alignment
+                            for (int i = 0; i &lt; (40 - len / 2); i++) {
+                                printf(" ");
+                            }
+                            printf("%s\n", text);
+                            break;
+                        case 3: // Right alignment
+                            for (int i = 0; i &lt; (80 - len); i++) {
+                                printf(" ");
+                            }
+                            printf("%s\n", text);
+                            break;
+                        default:
+                            printf("Invalid alignment choice.\n");
+                    }
+                
+                    return 0;
+                }
+                
+            </code>
+    </pre>
+    <h1>output</h1>
+    <pre>
+        Enter a string: anjali bibra 
+Choose text alignment (1 for left, 2 for center, 3 for right): 2
+                                  anjali bibra
+    </pre>
+</body>
+</html>

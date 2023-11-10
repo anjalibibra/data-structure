@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <h1>3. TRAVERSE THE ADJACENT MATRIX WITH DEPTH FIRST SEARCH</h1>
+            #include &lt;stdio.h&gt;
+                #include &lt;stdbool.h&gt;
+                
+                #define MAX_VERTICES 100
+                
+                // Define the adjacency matrix
+                int adjacencyMatrix[MAX_VERTICES][MAX_VERTICES];
+                bool visited[MAX_VERTICES];
+                int numVertices;
+                
+                void initializeGraph(int vertices) {
+                    numVertices = vertices;
+                    for (int i = 0; i &lt; numVertices; i++) {
+                        visited[i] = false;
+                        for (int j = 0; j &lt; numVertices; j++) {
+                            adjacencyMatrix[i][j] = 0;
+                        }
+                    }
+                }
+                
+                // Function to add an edge to the adjacency matrix
+                void addEdge(int start, int end) {
+                    adjacencyMatrix[start][end] = 1;
+                }
+                
+                // Depth-First Search function
+                void dfs(int vertex) {
+                    visited[vertex] = true;
+                    printf("Visited vertex: %d\n", vertex);
+                
+                    for (int i = 0; i &lt; numVertices; i++) {
+                        if (adjacencyMatrix[vertex][i] == 1 && !visited[i]) {
+                            dfs(i);
+                        }
+                    }
+                }
+                
+                int main() {
+                    int vertices, edges;
+                    printf("Enter the number of vertices and edges: ");
+                    scanf("%d %d", &vertices, &edges);
+                
+                    initializeGraph(vertices);
+                
+                    printf("Enter the edges (start end):\n");
+                    for (int i = 0; i &lt; edges; i++) {
+                        int start, end;
+                        scanf("%d %d", &start, &end);
+                        addEdge(start, end);
+                    }
+                
+                    printf("Depth-First Search starting from vertex 0:\n");
+                    dfs(0);
+                
+                    return 0;
+                }
+                
+        </code>
+    </pre>
+    <h1>output</h1>
+    <pre>
+        Enter the number of vertices and edges: 6 7
+Enter the edges (start end):
+0 1
+0 2
+1 3
+2 4
+2 5
+3 5
+4 5
+Enter the number of vertices and edges: 6 7
+Enter the edges (start end):
+0 1
+0 2
+1 3
+2 4
+2 5
+3 5
+4 5
+
+    </pre>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <h1>    3. Enter an array from user and copy the array into second array?  </h1>
+            #include &lt;stdio.h&gt;
+                void main()
+                {
+                    int ar[10];
+                    int i;
+                    int newar[10];
+            
+                    printf(" enter an array of 10 elements");
+                    for(i=0;i&lt;10;i++)
+                    {
+                        scanf("%d",&ar[i]);
+                    }
+                    for(i=0;i&lt;10;i++)
+                    {
+                        newar[i]=ar[i];
+                    }
+                    for(i=0;i&lt;10;i++)
+                    {
+                        printf("%d \t",newar[i]);
+                }
+                }
+        </code>
+    </pre>
+    <h1>output</h1>
+    <pre>
+enter an array of 10 elements10 9 8 7 6 5 4 3 2 1
+10 	9 	8 	7 	6 	5 	4 	3 	2 	1 	
+    </pre>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <h1>1. ENTER THE VERTICES AND EDGES AND REPRESENT IN ADJACENCY MATRIX AND PRINT IT.</h1>
+            #include &lt;stdio.h&gt;
+                int main() {
+                    int n, e, i, j, vertex1, vertex2;
+                    printf("Enter the number of vertices:\n");
+                    scanf("%d", &n);
+            
+                    int adjMatrix[n][n];
+            
+                    // Initialize the adjacency matrix with 0s.
+                    for(i = 0; i &lt; n; i++) {
+                        for(j = 0; j &lt; n; j++) {
+                            adjMatrix[i][j] = 0;
+                        }
+                    }
+            
+                    printf("Enter the number of edges:\n");
+                    scanf("%d", &e);
+            
+                    // Read edges and update the adjacency matrix.
+                    for(i = 0; i &lt; e; i++) {
+                        printf("Enter edge (format: vertex1 vertex2):\n");
+                        scanf("%d %d", &vertex1, &vertex2);
+            
+                        // Check for valid vertices and update the matrix.
+                        if(vertex1 &gt;= 0 && vertex1 &lt; n && vertex2 &gt;= 0 && vertex2 &lt; n) {
+                            adjMatrix[vertex1][vertex2] = 1;
+                            adjMatrix[vertex2][vertex1] = 1; // For undirected graph. Remove this for directed graph.
+                        } else {
+                            printf("Invalid vertices. Please enter vertices between 0 to %d\n", n - 1);
+                            i--; // to ensure the correct number of edges are inputted.
+                        }
+                    }
+            
+                    // Print the adjacency matrix.
+                    printf("Adjacency Matrix:\n");
+                    for(i = 0; i &lt; n; i++) {
+                        for(j = 0; j &lt; n; j++) {
+                            printf("%d ", adjMatrix[i][j]);
+                        }
+                        printf("\n");
+                    }
+            
+                    return 0;
+                }
+        </code>
+    </pre>
+        <h1>output</h1>
+        <pre>
+            Enter the number of vertices:
+5
+Enter the number of edges:
+4
+Enter edge (format: vertex1 vertex2):
+0 1
+Enter edge (format: vertex1 vertex2):
+1 2
+Enter edge (format: vertex1 vertex2):
+2 3
+Enter edge (format: vertex1 vertex2):
+3 4
+Adjacency Matrix:
+0 1 0 0 0 
+1 0 1 0 0 
+0 1 0 1 0 
+0 0 1 0 1 
+0 0 0 1 0 
+
+            </pre>
+</body>
+</html>

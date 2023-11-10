@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            
+            #include&lt;stdio.h&gt;
+                //multiply 2 matrix
+                void main()
+                {
+                    int ar1[3][3];
+                    int ar2[3][3];
+                    int i,j;
+                    printf("Enter elements of first matrix:\n");
+                    for(i=0;i&lt;3;i++)
+                    {
+                        for(j=0;j&lt;3;j++)
+                        {
+                            printf("array element [%d][%d]=",i,j);
+                            scanf("%d",&ar1[i][j]);
+                        }
+                    }
+                    for(i=0;i&lt;3;i++)
+                    {
+                        for(j=0;j&lt;3;j++)
+                        {
+                            printf("array element [%d][%d]=",i,j);
+                            scanf("%d",&ar2[i][j]);
+                        }
+                    }
+                    //multiplication
+                    int result[3][3],sum;
+                    for(i=0;i&lt;3;i++)
+                    {
+                        for(j=0;j&lt;3;j++)
+                        {
+                            sum = 0;
+                            for(int k=0;k&lt;3;k++)
+                            sum += ar1[i][k]*ar2[k][j];
+                            result[i][j] = sum;
+                            }
+                            }
+                            printf("\nthe product of two matrices is :\n");
+                            for(i=0;i&lt;3;i++)
+                            {
+                                for(j=0;j&lt;3;j++)
+                                printf("%d ",result[i][j]);
+                                printf("\n");
+                            }
+                }
+                
+        </code>
+    </pre>
+    <h1> output </h1>
+    <pre>
+Enter elements of first matrix:
+array element [0][0]=1
+array element [0][1]=2
+array element [0][2]=6
+array element [1][0]=4
+array element [1][1]=4
+array element [1][2]=6
+array element [2][0]=2
+array element [2][1]=6
+array element [2][2]=3
+array element [0][0]=74
+array element [0][1]=56
+array element [0][2]=2
+array element [1][0]=1
+array element [1][1]=2
+array element [1][2]=3
+array element [2][0]=5
+array element [2][1]=6
+array element [2][2]=4
+the product of two matrices is :
+106 96 32 
+330 268 44 
+169 142 34 
+
+    </pre>
+</body>
+</html>

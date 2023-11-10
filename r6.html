@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+                <h1>//6. FIND THE SMALLEST ELEMENT IN THE INTEGER ARRAY USING RECURSION.</h1>
+                #include&lt;stdio.h&gt;;  
+  
+                    #define N 5  
+                      
+                    int smallest(int num[], int n, int small)  
+                    {  
+                        if(n &lt; 1)  
+                            return small;  
+                        else  
+                        {  
+                            if(num[n] &lt; small)  
+                                small = num[n];  
+                      
+                            return smallest(num, --n, small);  
+                        }  
+                    }  
+                      
+                    int main()  
+                    {  
+                        int a[N], i;  
+                      
+                        printf("Enter %d integer numbers\n", N);  
+                        for(i = 0; i &lt; N; i++)  
+                            scanf("%d", &a[i]);  
+                      
+                        printf("Smallest Element In The Array: %d\n", smallest(a, N - 1, a[0]));  
+                      
+                        return 0;  
+                    }  
+        </code>
+    </pre>
+    <h1>output</h1>
+    <pre>
+        
+    </pre>
+</body>
+</html>

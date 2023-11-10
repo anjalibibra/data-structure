@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <h1> 29. ENTER THE STRING FROM USER AND CONVERT CHARACTERS INTO THEIR ASCII VALUES IN THE INTEGER ARRAY. [FOR
+                EXAMPLE TAKE 10 CHARACTERS]</h1>
+            #include &lt;stdio.h&gt;
+                #include &lt;string.h&gt;
+                
+                void stringToAsciiArray(char str[], int asciiArray[]) {
+                    int length = strlen(str);
+                
+                    for (int i = 0; i &lt; length; i++) {
+                        asciiArray[i] = (int)str[i];
+                    }
+                }
+                
+                int main() {
+                    char str[100]; // Assuming a string of up to 100 characters
+                    int asciiArray[100]; // Assuming the same length for ASCII values
+                
+                    printf("Enter a string: ");
+                    gets(str); // Read a line of text (be cautious about buffer overflow)
+                
+                    // Convert the string to an array of ASCII values
+                    stringToAsciiArray(str, asciiArray);
+                
+                    printf("ASCII values of the characters in the string:\n");
+                    for (int i = 0; i &lt; strlen(str); i++) {
+                        printf("%c: %d\n", str[i], asciiArray[i]);
+                    }
+                
+                    return 0;
+                }
+        </code>
+    </pre>
+    <h1>output</h1>
+    <pre>
+        <code>
+            Enter a string: Hello World!
+            ASCII values of the characters in the string:
+            H: 72
+            e: 101
+            l: 108
+            l: 108
+            o: 111
+            : 58
+            W: 87
+            o: 111
+            r: 114
+            l: 108
+            d: 100
+            !: 33
+        </code>
+    </pre>
+</body>
+</html>

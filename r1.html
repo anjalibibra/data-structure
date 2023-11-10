@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <h1>// calculate factorial of a number using recursion</h1>
+#include&lt;stdio.h&gt;
+
+int fact(int n)
+{
+    if(n==0)
+    {
+        return 1;
+    }
+    else
+    {
+        return n*fact(n-1);
+    }
+}
+void main()
+{
+    unsigned int n;
+    printf("enter a positive number ");
+    scanf("%u",&n);
+    printf("factorial is %d ",fact(n));
+}
+        </code>
+    </pre>
+    <h1>output</h1>
+    <pre>
+enter a positive number 12
+factorial is 479001600 
+    </pre>
+</body>
+</html>

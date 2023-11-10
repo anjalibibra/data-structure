@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <h1>   16. Enter two arrays from the user and check they are same or not? </h1>
+        #include &lt;stdio.h&gt;
+            void main()
+            {
+                int ar[10];
+                int newar[10];
+                int i,j;
+                j=0;
+                printf("program to check if the 2 array are same or not \n");
+                for(i=0;i&lt;10;i++)
+                {
+                    printf("enter the %d index element of the array \n",i);
+                    scanf("%d",&ar[i]);
+                }
+                printf("enter elements of 2nd array \n");
+                for(i=0;i&lt;10;i++)
+                {
+                    printf("enter the %d index element of the array ",i);
+                    scanf("%d",&newar[i]);
+                }
+                for(i=0;i&lt;10;i++)
+                {
+                    if(ar[i]!=newar[j])
+                    {
+                        printf("the two array are not equal");
+                        break;
+                    }
+                    else
+                    {
+                        j=j+1;
+                    }
+                }
+                    if(j==10)
+                    {
+                        printf(" the two array are equal");
+                    }
+        
+            }
+    </pre>
+    <h1>output</h1>
+    <pre>
+        program to check if the 2 array are same or not 
+enter the 0 index element of the array 
+1
+enter the 1 index element of the array 
+2
+enter the 2 index element of the array 
+3
+enter the 3 index element of the array 
+4
+enter the 4 index element of the array 
+5
+enter the 5 index element of the array 
+6
+enter the 6 index element of the array 
+7
+enter the 7 index element of the array 
+8
+enter the 8 index element of the array 
+9
+enter the 9 index element of the array 
+0
+enter elements of 2nd array 
+enter the 0 index element of the array 1
+enter the 1 index element of the array 2
+enter the 2 index element of the array 3
+enter the 3 index element of the array 4
+enter the 4 index element of the array 5
+enter the 5 index element of the array 6
+enter the 6 index element of the array 7
+enter the 7 index element of the array 8
+enter the 8 index element of the array 9
+enter the 9 index element of the array 0
+the two array are equal
+    </pre>
+</body>
+</html>

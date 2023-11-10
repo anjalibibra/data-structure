@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <h1>12. IMPLEMENT THE OPERATIONS OF PRIORITY QUEUE DYNAMICALLY OF STRING (INSERT, DELETE, PEEK, ISEMPTY, ISFULL)</h1>
+
+            #include&lt;stdio.h&gt;
+            #include&lt;string.h&gt;
+            #include&lt;stdlib.h&gt;
+            
+            struct Priorityqueue {
+                char data[100]; 
+                int prio;
+                struct Priorityqueue *next;
+            };
+            
+            typedef struct Priorityqueue pq;
+            pq *front = NULL, *rear = NULL, *nn;
+            
+            void pqenqueue(char value[], int prio) {
+                pq *sl, *search, *temp;
+                nn = (pq *)malloc(sizeof(pq));
+                strcpy(nn-&gt;data, value);
+                nn-&gt;prio = prio;
+                nn-&gt;next = NULL;
+            
+                temp = nn;
+                if (front == NULL && rear == NULL) {
+                    front = rear = nn;
+                } else {
+                    sl = NULL;
+                    search = front;
+                    while (search != NULL && temp-&gt;prio &gt; search-&gt;prio) {
+                        sl = search;
+                        search = search-&gt;next;
+                    }
+                    if (sl != NULL) {
+                        temp-&gt;next = sl-&gt;next;
+                        sl-&gt;next = temp;
+                    } else {
+                        temp-&gt;next = front;
+                        front = temp;
+                    }
+                }
+            }
+            
+            void dequeue() {
+                pq *temp;
+                temp = front;
+                if (rear == NULL && front == NULL) {
+                    printf("\nEmpty");
+                    return;
+                } else {
+                    front = front-&gt;next;
+                    free(temp);
+                }
+            }
+            
+            void display() {
+                pq *temp;
+                temp = front;
+                if (rear == NULL && front == NULL) {
+                    printf("\nEmpty");
+                    return;
+                } else {
+                    while (temp != rear) {
+                        printf("%s (%d) -&gt; ", temp-&gt;data, temp-&gt;prio);
+                        temp = temp-&gt;next;
+                    }
+                    printf("%s (%d) -&gt; ", temp-&gt;data, temp-&gt;prio);
+                }
+            }
+            
+            int main() {
+                char value[100];
+                int prio, ch;
+                printf("\nPress 1: To insert value");
+                printf("\nPress 2: To delete value");
+                printf("\nPress 3: To display values");
+                printf("\nPress 4: Exit the code");
+                while (1) {
+                    printf("\nEnter your choice: ");
+                    scanf("%d", &ch);
+            
+                    switch (ch) {
+                        case 1:
+                            printf("\nEnter value to insert: ");
+                            scanf("%s", value);
+                            printf("\nEnter the priority: ");
+                            scanf("%d", &prio);
+                            pqenqueue(value, prio);
+                            break;
+            
+                        case 2:
+                            dequeue();
+                            break;
+            
+                        case 3:
+                            display();
+                            break;
+            
+                        case 4:
+                            printf("**Code has been terminated**\n");
+                            exit(0);
+                            break;
+            
+                        default:
+                            printf("\nInvalid choice");
+                            break;
+                    }
+                }
+                return 0;
+            }
+
+            </code>
+    </pre>
+    <h1>output</h1>
+    <pre>
+      
+Press 1: To insert value
+Press 2: To delete value
+Press 3: To display values
+Press 4: Exit the code
+Enter your choice: 1
+Enter value to insert: o
+Enter the priority: 1
+Enter your choice: 1
+Enter value to insert: z
+Enter the priority: 2
+Enter your choice: 1
+Enter value to insert: c
+Enter the priority: 1
+Enter your choice: 3
+c (1) -> o (1) -> 
+Enter your choice: 2
+Enter your choice: 3
+o (1) -> 
+Enter your choice: 4
+**Code has been terminated**
+
+    </pre>
+</body>
+</html>

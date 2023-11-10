@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <h1>   14. Enter an array from user and print all possible combinations of the elements? </h1>
+        #include &lt;stdio.h&gt;
+            int main(){
+                int arr[5], i, j, count=0;
+                printf("Enter values of your array: ");
+                for(i=0; i&lt;5; i++){
+                    scanf("%d", &arr[i]);
+                }
+                printf("Your values are: ");
+                for(i=0; i&lt;5; i++){
+                    printf(" %d ", arr[i]);
+                }
+                printf("\n");
+                for(i=0; i&lt;5; i++){
+                    for(j=0; j&lt;5; j++){
+                            printf(" %d%d ", arr[i], arr[j]);
+        
+                    }
+                }
+            return 0;
+            }
+    </pre>
+    <h1>output</h1>
+    <pre>
+Enter values of your array: 10 9 8 7 6 5 5 4 9 10
+Your values are:  10  9  8  7  6 
+ 1010  109  108  107  106  910  99  98  97  96  810  89  88  87  86  710  79  78  77  76  610  69  68  67  66 
+    </pre>
+</body>
+</html>

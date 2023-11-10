@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <h1>//program to subtract 2d array</h1>
+            #include&lt;stdio.h&gt;
+ 
+                
+                 void main()
+                 {
+                    int ar[3][3];
+                    int ar1[3][3];
+                    int i,j;
+                    printf("Enter the elements of first matrix\n");
+                    for(i=0;i&lt;=2;++i)
+                    {
+                        for ( j = 0 ; j &lt;= 2 ; ++j )
+                        {
+                            printf(" matrix element[%d][%d]",i,j);
+                            scanf("%d",&ar[i][j]);
+                            printf("\n");
+                        }
+                    }
+                            printf("\n Enter the elements of second matrix \n");
+                            for(i=0;i&lt;=2;++i)
+                            {
+                                for ( j = 0 ; j &lt;= 2 ; ++j )
+                                {
+                                    printf(" matrix element[%d][%d]",i,j);
+                                    scanf("%d",&ar1[i][j]);
+                                    printf("\n");
+                                }
+                            }
+                                    for(int k=0;k&lt;=2;k++)
+                                    {
+                                        for(int l=0;l&lt;=2;l++)
+                                        {
+                                            printf ("%d ",ar[k][l]-ar1[k][l] );
+                                        }   printf("\n" );
+                                    }
+                                                            
+                }
+                
+        </code>
+    </pre>
+    <h1>OUTPUT</h1>
+    <PRE>
+Enter the elements of first matrix
+matrix element[0][0]1
+matrix element[0][1]12
+matrix element[0][2]34
+5matrix element[1][0]6
+matrix element[1][1]76
+matrix element[1][2]87
+matrix element[2][0]23
+matrix element[2][1]23
+matrix element[2][2]12
+Enter the elements of second matrix 
+ matrix element[0][0]98
+ matrix element[0][1]54
+ matrix element[0][2]45
+ matrix element[1][0]87
+ matrix element[1][1]35
+ matrix element[1][2]65
+ matrix element[2][0]89
+ matrix element[2][1]65
+ matrix element[2][2]45
+ -97 -42 -11 
+-81 41 22 
+-66 -42 -33 
+
+    </PRE>
+</body>
+</html>

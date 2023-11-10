@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <h1>  9. Enter an array from user and find the k-th smallest value? </h1>
+            #include &lt;stdio.h&gt;
+                void main()
+                {
+                int ar[10];
+                int i,j,temp;
+                int k; // k is used to take value from user for the kth highest number
+                jump:
+                printf(" enter 10 elements of array");
+                for(i=0;i&lt;10;i++)
+                {
+                scanf("%d",&ar[i]);
+                }
+                printf(" enter any number from 0-9 for the k-th highst number");
+                scanf("%d",&k);
+                for(i=0;i&lt;10;i++)
+                {
+                    for(j=i+1;j&lt;10;j++)
+                    {
+                        if(ar[i]&lt;ar[j]) //desc order so that the highest no come in the 0th index
+                        {
+                            temp = ar[i];
+                            ar[i]=ar[j];
+                            ar[j]=temp;
+                        }
+                    }
+                }
+                 printf("\n");
+                if(k&gt;=0 && k&lt;=9)
+                {
+                    printf(" the %d highest number is %d",k,ar[k-1]);
+                }
+                else
+                {
+                printf(" invalid number given");
+                goto jump;
+                }
+                }
+            
+        </code>
+    </pre>
+    <h1>output</h1>
+    <pre>
+enter 10 elements of array10 9 8 7 66 55 44 33 22 11
+enter any number from 0-9 for the k-th highst number3
+the 3 highest number is 44
+    </pre>
+</body>
+</html>

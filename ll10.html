@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre><code>
+        <h1>10. ENTER THE 2 POLYNOMIAL EQUATIONS DYNAMICALLY, SUBTRACT THEM AND DISPLAY THE ANSWER</h1>
+        #include &lt;stdio.h&gt;
+            #include &lt;stdlib.h&gt;
+            
+            typedef struct Node
+            {
+                int coff;
+                int power;
+                struct Node *next;
+            } Node;
+            
+            int power(int base, int exponent)
+            {
+                if (exponent == 0)
+                    return 1;
+            
+                int result = base;
+                for (; exponent &gt; 1; exponent--)
+                {
+                    result = result * base;
+                }
+            
+                return result;
+            };
+            
+            void CreateNode(Node **head, int coff, int power)
+            {
+                Node *newNode = (Node *)malloc(sizeof(Node));
+                if (newNode == NULL)
+                {
+                    printf("*********Linked List is full*********\n");
+                    return;
+                }
+            
+                newNode-&gt;coff = coff;
+                newNode-&gt;power = power;
+            
+                newNode-&gt;next = *head;
+                (*head) = newNode;
+            }
+            
+            int GetSum(Node *first_eq_head, Node *second_eq_head, int x)
+            {
+                int sum1 = 0, sum2 = 0, tempSum;
+                Node *temp = first_eq_head;
+            
+                while (temp)
+                {
+                    tempSum = power(x, temp-&gt;power);
+                    tempSum *= temp-&gt;coff;
+                    sum1 += tempSum;
+                    temp = temp-&gt;next;
+                }
+            
+                temp = second_eq_head;
+                while (temp)
+                {
+                    tempSum = power(x, temp-&gt;power);
+                    tempSum *= temp-&gt;coff;
+                    sum2 += tempSum;
+                    temp = temp-&gt;next;
+                }
+                free(temp);
+                return sum1 - sum2;
+            };
+            
+            int main()
+            {
+                Node *first_equation_head = NULL;
+                Node *second_equation_head = NULL;
+                int n, coff, power, x;
+                printf("***Enter the terms of first equation****\n");
+                printf("Number of terms: ");
+                scanf("%d", &amp;n);
+            
+                // take the inputs for the first equation
+                for (int i = 0; i &lt; n; i++)
+                {
+                    printf("\nEnter the coffecient for %d term: ", i + 1);
+                    scanf("%d", &amp;coff);
+                    printf("\nEnter the power of the %d term: ", i + 1);
+                    scanf("%d", &amp;power);
+                    CreateNode(&amp;first_equation_head, coff, power);
+                }
+            
+                printf("***Enter the terms of second equation****\n");
+                printf("Number of terms: ");
+                scanf("%d", &amp;n);
+            
+                // take the inputs for the second equation
+            
+                for (int i = 0; i &lt; n; i++)
+                {
+                    printf("\nEnter the coffecient for %d term: ", i + 1);
+                    scanf("%d", &amp;coff);
+                    printf("\nEnter the power of the %d term: ", i + 1);
+                    scanf("%d", &amp;power);
+                    CreateNode(&amp;second_equation_head, coff, power);
+                }
+            
+                printf("******Enter the value of X******\n-&gt;");
+                scanf("%d", &amp;x);
+                int sum = GetSum(first_equation_head, second_equation_head, x);
+            
+                printf("Sub:%d", sum);
+            
+                free(first_equation_head);
+                free(second_equation_head);
+                return 0;
+            }
+   </code></pre>
+   <H1> OUTPUT </H1>
+   <PRE> 
+    ***Enter the terms of first equation****
+Number of terms: 2
+Enter the coffecient for 1 term: 10
+Enter the power of the 1 term: 1
+Enter the coffecient for 2 term: 12
+Enter the power of the 2 term: 1
+***Enter the terms of second equation****
+Number of terms: 3
+Enter the coffecient for 1 term: 1
+Enter the power of the 1 term: 1
+Enter the coffecient for 2 term: 2
+Enter the power of the 2 term: 1
+Enter the coffecient for 3 term: 2
+Enter the power of the 3 term: 1
+******Enter the value of X******
+->3
+Sub:51
+   </PRE>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            //enter the matrix from user , multiply it with a scalar matrix
+#include&lt;stdio.h&gt;
+
+void main()
+{
+    int arr[3][3];
+    int value;
+    int i,j;
+    printf("Enter elements of Matrix\n");
+    for(i=0;i&lt;3;i++)
+    {
+        for(j=0;j&lt;3;j++)
+        {
+            printf("array element [%d][%d]",i+1,j+1);
+            scanf("%d",&arr[i][j]);
+        }
+    }
+    printf("enter the scalar value by which the given matrix will be multiplied =");
+    scanf("%d",&value);
+    printf("\n matrix multipled by %d is as follows : \n", value);
+    for(i=0;i&lt;3;i++)
+    {
+        for(j=0;j&lt;3;j++)
+        {
+            printf("     %d     ",arr[i][j]*value);
+        }
+        printf("\n");
+    }
+
+}
+        </code>
+        <h1> output </h1>
+        <pre>
+Enter elements of Matrix
+array element [1][1]1
+array element [1][2]2
+array element [1][3]5
+array element [2][1]8
+array element [2][2]4
+array element [2][3]8
+array element [3][1]2
+array element [3][2]8
+array element [3][3]2
+enter the scalar value by which the given matrix will be multiplied =8
+matrix multipled by 8 is as follows : 
+     8          16          40     
+     64          32          64     
+     16          64          16     
+
+        </pre>
+</body>
+</html>

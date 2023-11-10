@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <h1>11. IMPLEMENT THE OPERATIONS OF PRIORITY QUEUE DYNAMICALLY OF INTEGERS (INSERT, DELETE, PEEK, ISEMPTY, ISFULL)</h1>
+
+        /* IMPLEMENT THE OPERATIONS OF PRIORITY QUEUE DYNAMICALLY OF INTEGERS (INSERT, DELETE, PEEK, ISEMPTY, ISFULL)*/
+        #include&lt;stdio.h&gt;
+        #include&lt;string.h&gt;
+        struct Priorityqueue{
+            int data;
+            int prio;
+            struct Priorityqueue *next;
+        };
+        typedef struct Priorityqueue pq;
+        pq *front=NULL,*rear=NULL,*nn;
+        void pqenqueue(int value ,int prio){
+            pq *sl,*search,*temp;
+            nn=(pq*)malloc(sizeof(pq));
+            nn-&gt;data=value;
+            nn-&gt;prio=prio;
+            nn-&gt;next=NULL;
+            
+            temp=nn;
+            if(front==NULL && rear==NULL){
+                front=rear=nn;
+            }else{
+                sl=NULL;
+                search=front;
+                while(search != NULL && temp-&gt;prio &gt; search-&gt;prio){
+                    sl=search;
+                    search=search-&gt;next;
+                }
+                if(sl != NULL){
+                    temp-&gt;next=sl-&gt;next;
+                    sl-&gt;next=temp;
+                }else{
+                    //agr sl==NULL to already ek hi node exist karta hai
+                    temp-&gt;next=front;
+                    front=temp;
+                }
+            }
+        }
+        void dequeue(){
+            pq *temp;
+            temp=front;
+            if(rear==0 && front==0){
+                printf("\nEmpty");
+                return;
+            }
+            // else if(rear == front){
+            //     rear=front=NULL;
+            //     free(temp);
+            // }
+            else{
+                front=front-&gt;next;
+                free(temp);
+            }
+        }
+        void display(){
+            pq *temp;
+            temp=front;
+             if(rear==0 && front==0){
+                printf("\nEmpty");
+                return;
+             }
+             else{
+                 //Do-while still not working 
+                 while(temp != rear){
+                     printf("%d-&gt;",temp-&gt;data);
+                     temp=temp-&gt;next;
+                 }
+                printf("%d-&gt;",temp-&gt;data);
+             }
+        }
+        void main(){
+            int value,prio,ch;
+            printf("\nPress 1: To insert value");
+            printf("\nPress 2: To delete value");
+            printf("\nPress 3: To display values");
+            printf("\nPress 4: Exit the code");
+            while(1){
+                printf("\nEnter your choice: ");
+                scanf("%d",&ch);
+                
+            switch(ch){
+                case 1: printf("\nEnter value to insert: ");
+                scanf("%d",&value);
+                printf("\nEnter the priority");
+                scanf("%d",&prio);
+                pqenqueue(value,prio);
+                break;
+                
+                case 2:dequeue();
+                break;
+                
+                case 3:display();
+                break;
+                
+                case 4:printf("**Code has been terminated**");
+                exit(1);
+                break;
+                
+                default:printf("\nInvalid choice");
+                break;
+            }
+            }
+        }
+
+        </code>
+    </pre>
+    <h1>output</h1>
+    <pre>
+       
+Press 1: To insert value
+Press 2: To delete value
+Press 3: To display values
+Press 4: Exit the code
+Enter your choice: 1
+Enter value to insert: 22
+Enter the priority1
+Enter your choice: 1
+Enter value to insert: 77
+Enter the priority2
+Enter your choice: 3
+22->
+Enter your choice: 4
+
+    </pre>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+           
+                <h1>//find the arithmetic mean of an integer array using recursion</h1>
+                #include&lt;stdio.h&gt;
+                int sum(int arr[], int n)
+                {
+                    if (n == 0 || n &lt; 0) { //base case: when no elements are left in the array, return 0
+                    return 0;
+                    } else {
+                        return (arr[n - 1] + sum(arr, n - 1)); //recursive call to add up all numbers in
+                        //the array from last element to first
+                        }
+                        }
+                        float find_mean(int arr[], int n){
+                            int s = sum(arr, n);
+                            return ((float)s / n); //return the arithmetic mean by dividing total sum by number of elements
+                            }
+                            int main(){
+                                int arr[10];
+                                printf("Enter 10 integers\n");
+                                for (int i=0;i&lt;10;i++){
+                                    scanf("%d", &arr[i]);
+                                    }
+                                    printf("\nThe arithmetic mean is %.2f\n", find_mean(arr, 10));
+                                    return 0;
+                                    }
+                
+        </code>
+    </pre>
+    <h1>output</h1>
+    <pre>
+Enter 10 integers
+12 32 43 56 54 87 54 40 09 76
+The arithmetic mean is 46.30
+
+    </pre>
+</body>
+</html>

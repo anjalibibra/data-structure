@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            //enter a matrix of 4 rows and 2 coloums from the user and display in matrix format
+            #include&lt;stdio.h&gt;
+            
+            void main()
+            {
+            int ar[4][2];
+            int i , j;
+            for(i=0;i&lt;4;i++)
+            {
+                for(j=0;j&lt;2;j++)
+                {
+                    printf("enter element [%d] [%d]",i,j);
+                    scanf("%d",&ar[i][j]);
+                    printf("\n");
+                }
+            }
+            //printing in matrix form
+            printf("displaying all the input by the user in a matrix form");
+            for(i=0;i&lt;4;i++)
+            {
+                for(j=0;j&lt;2;j++)
+                {
+                    printf("         %d       ",ar[i][j]);
+                }
+                printf("\n");
+                }
+            }
+        </code>
+        <pre>
+            <h1> output </h1><br>
+enter element [0] [0]1
+enter element [0] [1]2
+enter element [1] [0]3
+enter element [1] [1]4
+enter element [2] [0]5
+enter element [2] [1]6
+enter element [3] [0]7
+enter element [3] [1]8
+displaying all the input by the user in a matrix form
+ 1  2 
+ 3  4 
+ 5  6 
+ 7  8 
+
+        </pre>
+</body>
+</html>
