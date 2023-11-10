@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <h1>15. ENTER THE STRING FROM THE USER, ENTER A CHARACTER ALSO AND SEARCH THE CHARACTER IN THE STRING?</h1>
+            #include&lt;stdio.h&gt;
+                #include&lt;string.h&gt;
+                
+                int main()
+                {
+                     char str[100];
+                     char str2;
+                     int i , bound , len;
+                     printf("Enter a string:  ");
+                     gets(str);
+                     printf("enter a chracter:  ");
+                     scanf("%c",&str2);
+                     len=strlen(str);
+                     for(i=0;i&lt;;t;len;i++)
+                     {
+                        if(str[i]==str2)
+                        {
+                            printf("FOUND , it exist");
+                        }
+                     }
+                     if(i==len)
+                     {
+                        printf("NOT FOUND , it does not exist");
+                     }
+                }
+        </code>
+    </pre>
+    <h1>output</h1>
+    <pre>
+        <code>
+            Enter a string : hello world
+            enter a character : l
+            FOUND , it exist
+    </pre>
+</body>
+</html>

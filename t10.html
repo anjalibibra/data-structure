@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Assignment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+
+<body>
+  
+<pre class="text-small">
+
+    #include stdio.h&gt;
+    #include stdlib.h&gt;
+    
+    struct TreeNode {
+        int key;
+        struct TreeNode* left;
+        struct TreeNode* right;
+    };
+    
+    struct TreeNode* createNode(int key) {
+        struct TreeNode* newNode = (struct TreeNode*)malloc(sizeof(struct TreeNode));
+        newNode-&gt;key = key;
+        newNode-&gt;left = NULL;
+        newNode-&gt;right = NULL;
+        return newNode;
+    }
+    
+    struct TreeNode* insert(struct TreeNode* root, int key) {
+        if (root == NULL) {
+            return createNode(key);
+        }
+    
+        if (key &lt; root-&gt;key) {
+            root-&gt;left = insert(root-&gt;left, key);
+        }
+        else if (key &gt; root-&gt;key) {
+            root-&gt;right = insert(root-&gt;right, key);
+        }
+    
+        return root;
+    }
+    
+    struct TreeNode* search(struct TreeNode* root, int key) {
+        if (root == NULL || root-&gt;key == key) {
+            return root;
+        }
+    
+        if (key &lt; root-&gt;key) {
+            return search(root-&gt;left, key);
+        }
+        return search(root-&gt;right, key);
+    }
+    
+    int hasDeadEnd(struct TreeNode* root, int min, int max) {
+        if (root == NULL) {
+            return 0;
+        }
+    
+        if (min == max) {
+            return 1;
+        }
+    
+        return hasDeadEnd(root-&gt;left, min, root-&gt;key - 1) ||
+               hasDeadEnd(root-&gt;right, root-&gt;key + 1, max);
+    }
+    
+    int main() {
+        struct TreeNode* root = NULL;
+        int choice, key;
+    
+        while (1) {
+            printf("\nBinary Search Tree Operations:\n");
+            printf("1. Insert\n");
+            printf("2. Check for Dead End\n");
+            printf("3. Exit\n");
+            printf("Enter your choice: ");
+            scanf("%d", &amp;choice);
+    
+            switch (choice) {
+                case 1:
+                    printf("Enter the key to insert: ");
+                    scanf("%d", &amp;key);
+                    root = insert(root, key);
+                    break;
+                case 2:
+                    if (hasDeadEnd(root, 1, 10000)) {
+                        printf("The BST contains a Dead End.\n");
+                    } else {
+                        printf("The BST does not contain a Dead End.\n");
+                    }
+                    break;
+                case 3:
+                    exit(0);
+                default:
+                    printf("Invalid choice. Please try again.\n");
+            }
+        }
+    
+        return 0;
+    }
+</pre>
+<pre class="text-small">
+<b class="text-big">Output:</b>
+
+Binary Search Tree Operations:
+1. Insert
+2. Check for Dead End
+3. Exit
+Enter your choice: 1
+Enter the key to insert: 50
+
+Binary Search Tree Operations:
+1. Insert
+2. Check for Dead End
+3. Exit
+Enter your choice: 1
+Enter the key to insert: 30
+
+Binary Search Tree Operations:
+1. Insert
+2. Check for Dead End
+3. Exit
+Enter your choice: 2
+The BST does not contain a Dead End.
+</pre>
+</body>
+</html>

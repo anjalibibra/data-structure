@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <h1> ENTER THE STRING FROM THE USER, SORT THE STRING IN ASCENDING ORDER AND PRINT IT.</h1>
+            #include&lt;stdio.h&gt;
+                #include&lt;string.h&gt;
+                void main()
+                {
+                    char sen[100];
+                    char word[100];
+                    //char str[100];
+                    int i,count,j;
+                    count=0;
+                    printf("enter a sentance");
+                    gets(sen);
+                    printf("enter a word to check the number of existance in the sentance you just entered");
+                    scanf("%s",word);
+                    for(i=0;i&lt;strlen(sen);i++)
+                    {
+                       for(j=0;j&lt;strlen(word);j++)
+                       {
+                        if(sen[i+j]!=word[j])
+                        {
+                            break;
+                        }
+                       }
+                         if(j==strlen(word))
+                        {
+                            count=count+1;
+                        }
+                    }
+                    printf("no of time = %d",count);
+                }
+        </code>
+    </pre>
+    <h1>output</h1>
+    <pre>
+        <code>
+            enter a sentance
+            hello world
+            enter a word to check the number of existance in the sentance you just entered
+            hello
+            no of time=1
+    </pre>
+</body>
+</html>

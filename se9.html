@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <h1>  9. CALCULATE THE BEST AND WORST COMPLEXITY OF THE LINEAR SEARCHING ALGORITHM WITH EXACT TIME TAKEN BY THE
+                ALGORITHM ON INTEGER ARRAY.</h1>
+            #include &lt;stdio.h&gt;
+                #include &lt;stdlib.h&gt;
+                #include &lt;time.h&gt;
+                
+                int binarySearch(int arr[], int left, int right, int key) {
+                    while (left &lt;= right) {
+                        int middle = left + (right - left) / 2;
+                
+                        if (arr[middle] == key) {
+                            return middle; 
+                        }
+                
+                        if (arr[middle] &lt; key) {
+                            left = middle + 1;
+                        } else {
+                            right = middle - 1;
+                        }
+                    }
+                    return -1; 
+                }
+                
+                int main() {
+                    int n, key;
+                    clock_t start, end;
+                    double cpu_time_used;
+                
+                    printf("Enter the size of the sorted array: ");
+                    scanf("%d", &n);
+                    int* arr = (int*)malloc(n * sizeof(int));
+                    for (int i = 0; i &lt; n; i++) {
+                        arr[i] = i;
+                    }
+                    key = rand() % n;
+                
+                    // Measure the time for the best-case scenario (element found at the middle)
+                    start = clock();
+                    int bestCaseResult = binarySearch(arr, 0, n - 1, arr[n / 2]);
+                    end = clock();
+                    cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
+                    printf("Best-case time: %f seconds\n", cpu_time_used);
+                
+                    // Measure the time for the worst-case scenario (element not found)
+                    start = clock();
+                    int worstCaseResult = binarySearch(arr, 0, n - 1, -1);
+                    end = clock();
+                    cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
+                    printf("Worst-case time: %f seconds\n", cpu_time_used);
+                    free(arr);
+                
+                    return 0;
+                }
+                
+        </code>
+    </pre>
+</pre>
+<h1>output</h1>
+<pre>
+Enter the size of the sorted array: 5
+Best-case time: 0.000002 seconds
+Worst-case time: 0.000000 seconds
+
+</pre>
+</body>
+</html>

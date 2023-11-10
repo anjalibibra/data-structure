@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+    <code>
+        <H1> 7. ENTER TWO STRINGS FROM USER AND COMPARE THOSE STRINGS THAT THEY ARE EQUAL OR NOT?</H1>
+    #include&lt;stdio.h&gt;
+        #include&lt;string.h&gt;
+
+        
+        void main()
+        {
+            char str[100];
+            char strr[100];
+            int compare;
+            printf("enter string :");
+            gets(str);
+            printf("\nenter another string :");
+            gets(strr);
+            compare = strcmp(str,strr);
+            if(compare==0)
+            {
+                printf("BOTH THE STRING YOPU ENTERED ARE SAME");
+            }
+            else
+            {
+             printf("STRING YOU ENTERED ARE NOT SAME");   
+            }
+        }
+        </code>
+        </pre>
+        <h1>output</h1>
+    <pre>
+enter string :hello anjali bibra
+enter another string :hello world
+STRING YOU ENTERED ARE NOT SAME
+    </pre>
+</body>
+</html>

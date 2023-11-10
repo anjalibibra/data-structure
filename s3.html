@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <H1>3. ENTER THE STRING FROM USER AND CONVERT INTO SENTENCE CASE ?</H1>
+    #include &lt;stdio.h&gt;
+        #include&lt;string.h&gt;
+        
+        void main()
+        {
+            char ar[100], i;
+            //int i;
+            printf("enter a sentance \t");
+            gets(ar);
+            printf("you entered : %s" ,ar);
+            for(i=0;i!='0';i++)
+            {
+              ar[i]=tolower(ar[i]);
+            }
+            ar[0]=toupper(ar[0]);
+            printf(" your sentance in sentance case \t");
+            printf("%s",ar);
+       
+        </pre> }
+    </code>
+    <h1>output</h1>
+    <pre>
+enter a sentance 	anjali bibra
+you entered : anjali bibra
+your sentance in sentance case 	Anjali bibra
+    </pre>
+</body>
+</html>

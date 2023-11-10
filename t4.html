@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Assignment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+
+<body>
+ 
+<pre class="text-small">
+    #include stdio.h>
+    #include stdlib.h>
+    
+    struct TreeNode {
+        int data;
+        struct TreeNode* left;
+        struct TreeNode* right;
+    };
+    
+    typedef struct TreeNode TreeNode;
+
+    TreeNode* createTreeNode(int data) {
+        TreeNode* newNode = (TreeNode*)malloc(sizeof(TreeNode));
+        newNode->data = data;
+        newNode->left = NULL;
+        newNode->right = NULL;
+        return newNode;
+    }
+    
+    TreeNode* buildBinaryTree() {
+        int data;
+        printf("Enter the root node value: ");
+        scanf("%d", &data);
+    
+        if (data == -1) {
+            return NULL;
+        }
+    
+        TreeNode* root = createTreeNode(data);
+    
+        printf("Enter the left subtree for %d:\n", data);
+        root->left = buildBinaryTree();
+    
+        printf("Enter the right subtree for %d:\n", data);
+        root->right = buildBinaryTree();
+    
+        return root;
+    }
+    
+    void printRightView(TreeNode* root, int level, int* maxLevel) {
+        if (root == NULL) {
+            return;
+        }
+    
+        if (level > *maxLevel) {
+            printf("%d ", root->data);
+            *maxLevel = level;
+        }
+    
+        printRightView(root->right, level + 1, maxLevel);
+        printRightView(root->left, level + 1, maxLevel);
+    }
+    
+    int main() {
+        TreeNode* root;
+    
+        printf("Enter the binary tree structure (use -1 for empty nodes):\n");
+        root = buildBinaryTree();
+    
+        int maxLevel = 0;
+    
+        printf("Right view of the binary tree: ");
+        printRightView(root, 1, &maxLevel);
+        printf("\n");
+    
+        return 0;
+    }
+</pre>
+<pre class="text-small">
+<b class="text-big">Output:</b>
+
+Enter the binary tree structure (use -1 for empty nodes):
+Enter the root node value: 1
+Enter the left subtree for 1:
+Enter the root node value: -1
+Enter the right subtree for 1:
+Enter the root node value: 2
+Enter the left subtree for 2:
+Enter the root node value: 3
+Enter the left subtree for 3:
+Enter the root node value: -1
+Enter the right subtree for 3:
+Enter the right subtree for 2:
+Enter the root node value: 4
+Enter the left subtree for 4:
+Enter the root node value: -1
+Enter the right subtree for 4:
+
+Right view of the binary tree: 1 2 4                        
+</pre>
+</body>
+</html>

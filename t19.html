@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Assignment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+
+<body>
+   
+<pre class="text-small">
+    #include stdio.h>
+    #include stdlib.h>
+    
+    struct TreeNode {
+        int data;
+        struct TreeNode* left;
+        struct TreeNode* right;
+    };
+    
+    struct TreeNode* createNode(int data) {
+        struct TreeNode* newNode = (struct TreeNode*)malloc(sizeof(struct TreeNode));
+        newNode->data = data;
+        newNode->left = NULL;
+        newNode->right = NULL;
+        return newNode;
+    }
+    
+    struct TreeNode* createCompleteBinaryTree() {
+        int data;
+        printf("Enter data for the root node: ");
+        scanf("%d", &data);
+    
+        struct TreeNode* root = createNode(data);
+        struct TreeNode* queue[1000];  // Assuming a maximum of 1000 nodes
+        int front = 0, rear = 0;
+        queue[rear++] = root;
+    
+        while (front < rear) {
+            struct TreeNode* current = queue[front++];
+            printf("Enter left child for %d (-1 for no child): ", current->data);
+            scanf("%d", &data);
+            if (data != -1) {
+                current->left = createNode(data);
+                queue[rear++] = current->left;
+            }
+            printf("Enter right child for %d (-1 for no child): ", current->data);
+            scanf("%d", &data);
+            if (data != -1) {
+                current->right = createNode(data);
+                queue[rear++] = current->right;
+            }
+        }
+    
+        return root;
+    }
+    
+    void inorderTraversal(struct TreeNode* root) {
+        if (root != NULL) {
+            inorderTraversal(root->left);
+            printf("%d ", root->data);
+            inorderTraversal(root->right);
+        }
+    }
+    
+    int main() {
+        struct TreeNode* root = createCompleteBinaryTree();
+    
+        printf("Inorder Traversal of the Complete Binary Tree: ");
+        inorderTraversal(root);
+        printf("\n");
+    
+        return 0;
+    }
+</pre>
+<pre class="text-small">
+<b class="text-big">Output:</b>
+
+Enter data for the root node: 1
+Enter left child for 1 (-1 for no child): 2
+Enter right child for 1 (-1 for no child): 3
+Enter left child for 2 (-1 for no child): 4
+Enter right child for 2 (-1 for no child): 5
+Enter left child for 3 (-1 for no child): -1
+Enter right child for 3 (-1 for no child): 6
+Enter left child for 4 (-1 for no child): -1
+Enter right child for 4 (-1 for no child): -1
+Enter left child for 5 (-1 for no child): -1
+Enter right child for 5 (-1 for no child): -1
+Enter left child for 6 (-1 for no child): -1
+Enter right child for 6 (-1 for no child): -1
+Inorder Traversal of the Complete Binary Tree: 4 2 5 1 6 3                        
+</pre>
+</body>
+</html>

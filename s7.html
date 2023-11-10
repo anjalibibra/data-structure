@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <H1> 5. ENTER THE STRING FROM USER AND CONVERT INTO TOGGLE CASE ?</H1>
+    #include&lt;stdio.h&gt;
+        #include&lt;string.h&gt;
+        
+        //toggle case
+        void main()
+        {
+            char str[100];
+            int i;
+            printf("enetr a sentance");
+            gets(str);
+            for(i=0;str[i];i++)
+            {
+                if(str[i]&gt;=97&&str[i]&lt;=122)
+                {
+                    str[i]=toupper(str[i]);
+                }
+                else  if (str[i]&gt;=65 && str[i]&lt;=90)
+                    {
+                    str[i]=tolower(str[i]);
+                    }
+                    else
+                    {
+                        break;
+                    }
+            }
+            printf("your sentance in toggal case : \n");
+            printf("%s",str);
+        }
+        
+            
+    </code>
+</pre>
+<h1>output</h1>
+    <pre>
+enetr a sentancehello aNJALI bIbrA
+your sentance in toggal case : 
+HELLO aNJALI bIbrA
+    </pre>
+</body>
+</html>

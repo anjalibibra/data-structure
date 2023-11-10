@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+          
+                <h1>2. ENTER A INTEGER ARRAY FROM THE USER AND PERFORM SELECTION SORT ALGORITHM THROUGH RECURSION. ALSO
+                    CALCULATE THE WORST AND BEST COMPLEXITY WITH EXACT TIME. </h1>
+                    #include &lt;stdio.h&gt;
+                        #include &lt;time.h&gt;
+                        
+                        void selection(int arr[], int n, int start_indx) {
+                            //check if start index has reached it's end.
+                            //indicating array is completed
+                            if (start_indx &gt;= n - 1) {
+                                return;
+                            }
+                            //it will keep track of minimum value of unsorted array
+                            int min_indx = start_indx;
+                            //for loop to find minimum value in array
+                            for (int i = start_indx + 1; i &lt; n; i++) {
+                                if (arr[i] &lt; arr[min_indx]) {
+                                    min_indx = i;
+                                }
+                            }
+                        //i minindex and startindex differ it indicates
+                        //a new smaller element was found in unsorted array
+                            if (min_indx != start_indx) {
+                                //so let's swap the element and bring it to the first
+                                int temp = arr[start_indx];
+                                arr[start_indx] = arr[min_indx];
+                                arr[min_indx] = temp;
+                            }
+                        //recursively calling the function with incremented value of start index
+                            selection(arr, n, start_indx + 1);
+                        }
+                        
+                        void main() {
+                            int i,n;
+                            printf("Enter the number of elements in the array: ");
+                            scanf("%d", &n);
+                        
+                            int arr[n];
+                            printf("Enter %d integers:\n", n);
+                            for (i = 0; i &lt; n; i++) {
+                                scanf("%d", &arr[i]);
+                            }
+                        
+                            // Record the start time
+                            clock_t start = clock();
+                        
+                            // Perform Selection Sort recursively
+                            selection(arr, n, 0);
+                        
+                            // Record the end time
+                            clock_t end = clock();
+                        
+                            // Calculate the time taken in seconds
+                            double time_complexity = ((double)(end - start)) / CLOCKS_PER_SEC;
+                        
+                            printf("Sorted array using Selection Sort:\n");
+                            for (int i = 0; i &lt; n; i++) {
+                                printf("%d ", arr[i]);
+                            }
+                        
+                            printf("\nTime taken: %f seconds\n", time_complexity);
+                        
+                        }
+           
+        </code>
+    </pre>
+    <h1>output</h1>
+    <pre>
+Enter the number of elements in the array: 5
+Enter 5 integers:12 34 54 76 8
+Sorted array using Selection Sort:
+8 12 34 54 76 
+Time taken: 0.000002 seconds
+
+    </pre>
+</body>
+</html>

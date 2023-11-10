@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <h1>8. SORT THE STACK IN ASCENDING ORDER USING INTEGER ARRAY.</h1>
+            //sort the stack in asecending order
+            #include&lt;stdio.h&gt;
+             int s1[6],s2[6],top=-1;
+            void push(int value){
+                top++;
+                s1[top]=value;
+            }
+            int pop(){
+                int data =s1[top];
+                top--;
+                return data; 
+            }
+            void main(){
+                int i=0,value,k,sorttop=-1;
+                for(i=0;i&lt;6;i++){
+                printf("Enter the value to be pushed");
+                scanf("%d",&value);
+                push(value);
+                }
+                  while(top!=-1){
+                     k= pop();
+                   while(sorttop!=-1&&s2[sorttop]&lt;k){
+                       push(s2[sorttop]);
+                          sorttop--;
+                   }
+                sorttop++;
+                s2[sorttop]=k;
+            }
+            while(sorttop!=-1){
+              push(s2[sorttop]);
+              sorttop--;   
+            }
+            printf("sorted stack: ");
+            for(i=0;i&lt;=top;i++)
+            printf(" %d ",s1[i]);
+            printf("\n");
+            
+            }
+        </code>
+    </pre>
+    <h1>output</h1>
+    <pre>
+Enter the value to be pushed12
+Enter the value to be pushed2
+Enter the value to be pushed6
+Enter the value to be pushed2
+Enter the value to be pushed8
+Enter the value to be pushed2
+sorted stack:  2  2  2  6  8  12 
+
+    </pre>
+</body>
+</html>

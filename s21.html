@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <h1>21. PRINT ALL THE PERMUTATION OF A STRING I.E. "ABCDE"</h1>
+            #include &lt;stdio.h&gt;
+                #include &lt;string.h&gt;
+                void permute(char str[], int currentIndex, int length) {
+                    if (currentIndex == length) {
+                        printf("%s\n", str);
+                        return;
+                    }
+                
+                    for (int i = currentIndex; i &lt;= length; i++) {
+                        // Swap characters
+                        char temp = str[currentIndex];
+                        str[currentIndex] = str[i];
+                        str[i] = temp;
+                
+                        //generate permutations
+                        permute(str, currentIndex + 1, length);
+                
+                        //backtracking
+                        temp = str[currentIndex];
+                        str[currentIndex] = str[i];
+                        str[i] = temp;
+                    }
+                }
+                
+                void main() {
+                    char str[100];
+                    printf("Enter a string: ");
+                    scanf("%s", str);
+                    int n = strlen(str);
+                    printf("Permutations of the string are:\n");
+                    permute(str, 0, n - 1);
+                }
+                
+        </code>
+    </pre>
+    <h1>output</h1>
+    <pre>
+        Enter a string: ABCD
+        Permutations of the string are:
+        ABDC
+        ACBD
+        ADCB
+        BACD
+        BADC
+        BCAD
+        BCDA
+        CABD
+        CADB
+        CDAB
+        DABC
+        DBCA
+        DCBA
+        
+    </pre>
+</body>
+</html>

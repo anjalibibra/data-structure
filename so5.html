@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+                <h1> 5. ENTER A INTEGER ARRAY FROM THE USER AND PERFORM INSERTION SORT ALGORITHM THROUGH ITERATION. ALSO
+                    CALCULATE THE WORST AND BEST COMPLEXITY WITH EXACT TIME.</h1>
+                #include &lt;stdio.h&gt;    
+                    void insertionSort(int arr[], int size) {
+                        for (int i = 1; i &lt; size; i++) {
+                            int temp = arr[i];
+                            int j = i - 1;
+                    
+                            while (j &gt;= 0 &amp;&amp; arr[j] &gt; temp) {
+                                arr[j + 1] = arr[j];
+                                j--;
+                            }
+                    
+                            arr[j + 1] = temp;
+                        }
+                    }
+                    
+                    
+                    int main() {
+                        int size;
+                        printf("Enter the size of the array: ");
+                        scanf("%d", &amp;size);
+                    
+                        int arr[50];
+                    
+                        printf("Enter the elements:\n");
+                        for (int i = 0; i &lt; size; i++) {
+                            printf("Element %d: ", i + 1);
+                            scanf("%d", &amp;arr[i]);
+                        }
+                    
+                        insertionSort(arr, size);
+                        printf("Sorted elements are: ");
+                        for (int i = 0; i &lt; size; i++) {
+                            printf("%d ", arr[i]);
+                        }
+                        printf("\n");
+                    }
+                    
+            </code>
+        </pre>
+        <h1>output</h1>
+    <pre>
+Enter the size of the array: 5
+Enter the elements:
+Element 1: 112
+Element 2: 1
+3Element 3: 4
+Element 4: 78
+Element 5: 4
+Sorted elements are: 1 4 4 78 112 
+
+    </pre>
+</body>
+</html>

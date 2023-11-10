@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <h1>19. ENTER THE STRING FROM THE USER AND CONVERT INTO A FLOAT VALUE?</h1>
+            #include &lt;stdio.h&gt;
+
+                float stringToFloat(const char* str) {
+                    float result = 0.0f;
+                    int sign = 1; // For handling negative numbers
+                    int i = 0;
+                    int fractionPart = 0; // To handle the fractional part
+                    float fractionMultiplier = 0.1f; // To adjust for decimal places
+                
+                    // Check for the sign (negative or positive)
+                    if (str[0] == '-') {
+                        sign = -1;
+                        i = 1; // Start from the next character
+                    }
+                
+                    while (str[i] != '\0') {
+                        if (str[i] &gt;= '0' && str[i] &lt;= '9') {
+                            if (fractionPart == 0) {
+                                result = result * 10 + (str[i] - '0');
+                            } else {
+                                result += (str[i] - '0') * fractionMultiplier;
+                                fractionMultiplier *= 0.1f;
+                            }
+                        } else if (str[i] == '.') {
+                            fractionPart = 1;
+                        } else {
+                            // Handle invalid characters here if needed
+                        }
+                        i++;
+                    }
+                
+                    return sign * result;
+                }
+                
+                int main() {
+                    char str[50]; // Assuming a string of up to 50 characters
+                    float num;
+                
+                    printf("Enter a float as a string: ");
+                    scanf("%s", str);
+                
+                    num = stringToFloat(str);
+                
+                    printf("Float value: %f\n", num);
+                
+                    return 0;
+                }
+                
+        </code>
+    </pre>
+    <h1>output</h1>
+    <pre>
+        Enter a float as a string: 34.278
+        Float value: 34.278000
+        
+        </pre>
+</body>
+</html>

@@ -1,0 +1,20 @@
+main{
+    background-color:rgb(245,245,244);
+}
+.box{
+   float: left;
+}
+iframe{
+    height: 667px;
+    width: 575px;
+}
+.iframe-left{
+
+   width: 300px;
+}
+.iframe-right{
+    width: 870px;
+}
+margin: 0;
+padding: 0;
+font-family: sans-serif;

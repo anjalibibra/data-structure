@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <h1>4. ENTER A STRING FROM THE USER, ENTER A CHARACTER AND PERFORM LINEAR SEARCH ALGORITHM THROUGH ITERATION.</h1>
+            #include &lt;stdio.h&gt;
+                #include &lt;string.h&gt;
+                
+                int linearSearchIterative(char *str, char ch) {
+                    int length = strlen(str);
+                    
+                    for (int i = 0; i &lt; length; i++) {
+                        if (str[i] == ch) {
+                            return i;
+                        }
+                    }
+                
+                    return -1;
+                }
+                
+                int main() {
+                    char inputString[100];
+                    char searchChar;
+                
+                    printf("Enter a string: ");
+                    scanf("%s", inputString);
+                
+                    printf("Enter a character to search: ");
+                    scanf(" %c", &searchChar); // Note the space before %c to consume any whitespace character
+                
+                    int result = linearSearchIterative(inputString, searchChar);
+                
+                    if (result != -1) {
+                        printf("Character '%c' found at position %d in the string.\n", searchChar, result);
+                    } else {
+                        printf("Character '%c' not found in the string.\n", searchChar);
+                    }
+                
+                    return 0;
+                }
+        </code>
+    </pre>
+</pre>
+<h1>output</h1>
+<pre>
+   
+Enter a string: anjali
+Enter a character to search: i
+Character 'i' found at position 5 in the string.
+
+</pre>
+</body>
+</html>

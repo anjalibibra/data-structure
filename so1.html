@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <pre>        <code>
+                <h1> 1. ENTER A INTEGER ARRAY FROM THE USER AND PERFORM SELECTION SORT ALGORITHM THROUGH ITERATION. ALSO
+                    CALCULATE THE WORST AND BEST COMPLEXITY WITH EXACT TIME.</h1>
+                //Selection Sort       
+                #include&lt;stdio.h&gt;
+                    int selectionSort(int arr[],int size){
+                        int i,j;
+                        int minIndex;
+                        for(i=0;i&lt;size-1;i++){
+                            minIndex=i;
+                            for(j=i+1;j&lt;size;j++){
+                                if(arr[j] &lt; arr[minIndex]){
+                                    minIndex=j;
+                                }
+                            }
+                             int temp=arr[i];
+                                arr[i]=arr[minIndex];
+                                arr[minIndex]=temp;
+                        }
+                        printf("Sorted array: ");
+                        for(i=0;i&lt;size;i++){
+                            printf("%d ",arr[i]);
+                        }
+                         printf("\n");
+                    }
+                    void main(){
+                        int arr[20]={20,4,50,6,9};
+                        selectionSort(arr,5);
+                        
+                    }  
+                        </code>
+                    </pre>
+        </code>
+    </pre>
+    <h1>output</h1>
+    <pre>
+        Sorted array: 4 6 9 20 50 
+    </pre>
+</body>
+</html>

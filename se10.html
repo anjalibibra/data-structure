@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <h1>10. CALCULATE THE BEST AND WORST COMPLEXITY OF THE BINARY SEARCHING ALGORITHM WITH EXACT TIME TAKEN BY THE
+                ALGORITHM ON INTEGER ARRAY.</h1>
+            #include &lt;stdio.h&gt;
+                #include &lt;conio.h&gt;
+                #include&lt;time.h&gt;
+                int search(int ary[], int size, int key)
+                {
+                    int mid,loc=-1,lb=0,up=size-1;
+                    while (lb&lt;up)
+                    {
+                        mid=(lb+up)/2;
+                        if (ary[mid]==key)
+                        {
+                            loc=mid;
+                            break;
+                        }
+                        else if (key&lt;ary[mid])
+                        {
+                            up=mid-1;
+                        }
+                        else
+                        lb=mid+1;
+                    }
+                    return loc;
+                }
+                
+                int bubble(int ary[], int size)
+                {
+                    int i,j,temp;
+                    for ( i = size-1; i &gt;0; i--)
+                    {
+                        for ( j= 0; j &lt;= i; j++)
+                        {
+                            if (ary[j]&gt;ary[j+1])
+                            {
+                                temp=ary[j];
+                                ary[j]=ary[j+1];
+                                ary[j+1]=temp;
+                            }
+                            
+                        }
+                        
+                    }
+                    return 0;
+                    
+                }
+                
+                void main()
+                {
+                    int ary[10], i, count, loc, num;
+                    printf("Enter your array size : ");
+                    scanf("%d", &count);
+                    for (i = 0; i &lt; count; i++)
+                    {
+                        printf("\nEnter %d value : ", i + 1);
+                        scanf("%d", &ary[i]);
+                    }
+                
+                    printf("\nEnter the number you want to search : ");
+                    scanf("%d", &num);
+                    clock_t start=clock();
+                    bubble(ary,count);
+                    loc = search(ary, count, num);
+                    clock_t end=clock();
+                    double time_complexity=((double)(end-start))/CLOCKS_PER_SEC;
+                    if (loc == -1)
+                    {
+                        printf("\nElement not found in array.");
+                    }
+                    else
+                    {
+                        printf("Element found at position  : %d", loc + 1);
+                    }
+                    printf("\nTime complexity is : %f",time_complexity);
+                }
+        </code>
+    </pre>
+    <h1>output</h1>
+    <pre>
+Enter your array size : 10
+Enter 1 value : 12
+Enter 2 value : 23
+Enter 3 value : 56
+Enter 4 value : 44
+Enter 5 value : 34
+Enter 6 value : 23
+Enter 7 value : 98
+Enter 8 value : 67
+Enter 9 value : 56
+Enter 10 value : 45
+Enter the number you want to search : 44
+Element found at position  : 6
+Time complexity is : 0.000002
+    </pre>
+</body>
+</html>

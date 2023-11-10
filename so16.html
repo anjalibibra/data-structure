@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <h1>16. ENTER A STRING ARRAY FROM THE USER AND PERFORM INSERTION SORT ALGORITHM THROUGH RECURSION. ALSO
+            CALCULATE THE WORST AND BEST COMPLEXITY WITH EXACT TIME.</h1>
+        #include &lt;stdio.h&gt;
+            #include &lt;string.h&gt;
+            #include&lt;stdlib.h&gt;
+            #include&lt;time.h&gt;
+            
+            void swap(char **a, char **b) {
+                //function takes two pointers to strings (pointers to char* arr[]) 
+                //and swaps the strings they point to
+                char *temp = *a;
+                *a = *b;
+                *b = temp;
+            }
+            
+            int partition(char *arr[], int low, int high) {
+                char *pivot = arr[low]; // Use the first element as the pivot 
+                int i = low;
+                int j;
+                
+                for (j = low + 1; j &lt;= high; j++) {
+                    //compare from 2 to end
+                    if (strcmp(arr[j], pivot) &lt; 0) {
+                        i++;
+                        swap(&arr[i], &arr[j]);
+                        //swap i and j
+                    }
+                }
+                //swap the pivot itself but with actual value----&gt;low
+                //if it is done by pivot the change will not reflect in array
+                swap(&arr[i], &arr[low]);
+                return i;
+            }
+            
+            void quickSort(char *arr[], int low, int high) {
+                if (low &lt; high) {
+                    int partition_store = partition(arr, low, high);
+            
+                    quickSort(arr, low, partition_store - 1);
+                    quickSort(arr, partition_store + 1, high);
+                }
+            }
+            
+            int main() {
+            
+                int num_str;
+                printf("Enter the number of strings: ");
+                scanf("%d", &num_str);
+            
+                char *arr[200]; // 
+            
+                for (int i = 0; i &lt; num_str; i++) {
+                    arr[i] = (char *)malloc(100); // allocate size dynamically
+                    printf("Enter string %d: ", i + 1);
+                    scanf("%s", arr[i]);
+                }
+            
+                printf("Unsorted array: ");
+                for (int i = 0; i &lt; num_str; i++) {
+                    printf("%s ", arr[i]);
+                }
+                clock_t start=clock();
+                quickSort(arr, 0, num_str - 1);
+                clock_t end=clock();
+                printf("\nSorted array: ");
+                for (int i = 0; i &lt; num_str; i++) {
+                    printf("%s ", arr[i]);
+                }
+                double time_complexity=((double)(end-start))/CLOCKS_PER_SEC;
+                // Free memory allocated for each string
+                for (int i = 0; i &lt; num_str; i++) {
+                    free(arr[i]);
+                }
+                printf("\nTime complexity is : %f",time_complexity);
+            
+                return 0;
+            }
+    </pre>
+    <h1>output</h1>
+    <pre>
+Enter the number of strings: 5
+Enter string 1: a
+Enter string 2: f
+Enter string 3: u
+Enter string 4: w
+Enter string 5: z
+Unsorted array: a f u w z 
+Sorted array: a f u w z 
+Time complexity is : 0.000004
+    </pre>
+</body>
+</html>

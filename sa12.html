@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <h1>12. CREATE A PROGRAM TO EVALUATE THE POSTFIX EXPRESSION.</h1>
+            //Evaluation postfix
+#include&lt;stdio.h&lt;
+#include&lt;math.h&lt;
+int top=-1;
+float val;
+void push(float stack[],int n,float value){
+     if (top==n-1)
+     printf("overflow condition ");
+    else
+       top++;
+
+    stack[top]=value;
+    
+  
+}
+float  pop(float stack[],int n){
+    if (top==-1)
+       printf("underflow ");
+    else{
+        val=stack[top];
+
+       top--;}
+    return val;
+}
+int main()
+{
+char eq[20];
+float stack[20];
+float operator1,operator2,sol,num;
+printf("Enter the equation:");
+gets(eq);
+for(int i=0;eq[i]!='\0';i++){
+    if(isdigit(eq[i])){
+num=eq[i]-48;
+   push(stack,20,num);
+    }
+    else{
+   operator1=pop(stack,20);
+  
+   operator2=pop(stack,20);
+   
+   if(eq[i]=='+')
+   sol=operator2+operator1;
+    else if(eq[i]=='-')
+   sol=operator2-operator1;
+    else if(eq[i]=='*')
+   sol=operator2*operator1;
+    else if(eq[i]=='/')
+   sol=operator2/operator1;
+    else if(eq[i]=='^')
+   sol=pow(operator2,operator1);
+   else
+   printf("Operator is not identified\n");
+    push(stack,20,sol);
+    }
+     
+}
+printf("Answer is %f",pop(stack,20));
+return 0;
+}
+
+        </code>
+    </pre>
+    <h1>output</h1>
+    <pre>
+        Enter the equation: 5 3 2 * + 8 2 ^ /
+        Answer is 14.000000
+
+    </pre>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Assignment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+
+<body>
+<pre class="text-small">
+    #include&lt;stdio.h&gt;
+    #include&lt;stdlib.h&gt;
+    
+    struct TreeNode {
+        int data;
+        struct TreeNode* left;
+        struct TreeNode* right;
+    };
+    
+    struct TreeNode* createNode(int data) {
+        struct TreeNode* newNode = (struct TreeNode*)malloc(sizeof(struct TreeNode));
+        newNode-&gt;data = data;
+        newNode-&gt;left = NULL;
+        newNode-&gt;right = NULL;
+        return newNode;
+    }
+    
+    struct TreeNode* insert(struct TreeNode* root, int data) {
+        if (root == NULL) {
+            return createNode(data);
+        }
+        if (data &lt; root-&gt;data) {
+            root-&gt;left = insert(root-&gt;left, data);
+        } else {
+            root-&gt;right = insert(root-&gt;right, data);
+        }
+        return root;
+    }
+    
+    int countNodes(struct TreeNode* root) {
+        if (root == NULL) {
+            return 0;
+        }
+        return 1 + countNodes(root-&gt;left) + countNodes(root-&gt;right);
+    }
+    
+    int main() {
+        struct TreeNode* root = NULL;
+        int n, i, data;
+    
+        printf("Enter the number of nodes in the BST: ");
+        scanf("%d", &n);
+    
+        if (n &lt;= 0) {
+            printf("Invalid input.\n");
+            return 1;
+        }
+    
+        printf("Enter the elements of the BST:\n");
+        for (i = 0; i &lt; n; i++) {
+            scanf("%d", &data);
+            root = insert(root, data);
+        }
+    
+        int nodeCount = countNodes(root);
+        printf("Number of nodes in the BST: %d\n", nodeCount);
+    
+        return 0;
+    }
+</pre>
+<pre class="text-small">
+<b class="text-big">Output:</b>
+
+Enter the number of nodes in the BST: 7
+Enter the elements of the BST:
+50
+30
+70
+20
+40
+60
+80
+Number of nodes in the BST: 7                        
+</pre>
+</body>
+</html>

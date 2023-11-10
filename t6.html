@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Assignment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+
+<body>
+   
+<pre class="text-small">
+    #include stdio.h>
+    #include stdlib.h>
+    
+    struct TreeNode {
+        int data;
+        struct TreeNode* left;
+        struct TreeNode* right;
+    };
+    
+    typedef struct TreeNode TreeNode;
+    
+    TreeNode* createTreeNode(int data) {
+        TreeNode* newNode = (TreeNode*)malloc(sizeof(TreeNode));
+        newNode->data = data;
+        newNode->left = NULL;
+        newNode->right = NULL;
+        return newNode;
+    }
+    
+    TreeNode* buildBinaryTree() {
+        int data;
+        printf("Enter the root node value (or -1 for an empty node): ");
+        scanf("%d", &data);
+    
+        if (data == -1) {
+            return NULL; // Return NULL for empty nodes (represented by -1)
+        }
+    
+        TreeNode* root = createTreeNode(data);
+    
+        printf("Enter the left subtree for %d:\n", data);
+        root->left = buildBinaryTree();
+    
+        printf("Enter the right subtree for %d:\n", data);
+        root->right = buildBinaryTree();
+    
+        return root;
+    }
+    
+    int findMaxDepth(TreeNode* root) {
+        if (root == NULL) {
+            return 0;
+        }
+    
+        int leftDepth = findMaxDepth(root->left);
+        int rightDepth = findMaxDepth(root->right);
+    
+        return 1 + (leftDepth > rightDepth ? leftDepth : rightDepth);
+    }
+    
+    int main() {
+        TreeNode* root;
+    
+        printf("Enter the binary tree structure:\n");
+        root = buildBinaryTree();
+    
+        int maxDepth = findMaxDepth(root);
+        printf("Maximum depth of the binary tree: %d\n", maxDepth);
+    
+        return 0;
+    }
+</pre>
+<pre class="text-small">
+<b class="text-big">Output:</b>
+
+Enter the binary tree structure:
+Enter the root node value (or -1 for an empty node): 1
+Enter the left subtree for 1:
+Enter the root node value (or -1 for an empty node): 2
+Enter the left subtree for 2:
+Enter the root node value (or -1 for an empty node): -1
+Enter the right subtree for 2:
+Enter the root node value (or -1 for an empty node): -1
+Enter the right subtree for 1:
+Enter the root node value (or -1 for an empty node): 3
+Enter the left subtree for 3:
+Enter the root node value (or -1 for an empty node): -1
+Enter the right subtree for 3:
+Maximum depth of the binary tree: 3
+</pre>
+</body>
+</html>

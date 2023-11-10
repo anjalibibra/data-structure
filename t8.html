@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Assignment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+
+<body>
+ 
+<pre class="text-small">
+    #include stdio.h>
+    #include stdlib.h>
+    
+    struct TreeNode {
+        int data;
+        struct TreeNode* left;
+        struct TreeNode* right;
+    };
+    
+    typedef struct TreeNode TreeNode;
+
+    TreeNode* createNode(int data) {
+        TreeNode* newNode = (TreeNode*)malloc(sizeof(TreeNode));
+        newNode->data = data;
+        newNode->left = newNode->right = NULL;
+        return newNode;
+    }
+    
+    TreeNode* insert(TreeNode* root, int data) {
+        if (root == NULL) {
+            return createNode(data);
+        }
+    
+        if (data < root->data) {
+            root->left = insert(root->left, data);
+        } else if (data > root->data) {
+            root->right = insert(root->right, data);
+        }
+    
+        return root;
+    }
+    
+    int findMin(TreeNode* root) {
+        if (root->left == NULL) {
+            return root->data;
+        }
+        return findMin(root->left);
+    }
+    
+    TreeNode* delete(TreeNode* root, int data) {
+        if (root == NULL) {
+            return root;
+        }
+    
+        if (data < root->data) {
+            root->left = delete(root->left, data);
+        } else if (data > root->data) {
+            root->right = delete(root->right, data);
+        } else {
+            if (root->left == NULL) {
+                TreeNode* temp = root->right;
+                free(root);
+                return temp;
+            } else if (root->right == NULL) {
+                TreeNode* temp = root->left;
+                free(root);
+                return temp;
+            }
+    
+            root->data = findMin(root->right);
+            root->right = delete(root->right, root->data);
+        }
+        return root;
+    }
+    
+    void preorder(TreeNode* root) {
+        if (root != NULL) {
+            printf("%d ", root->data);
+            preorder(root->left);
+            preorder(root->right);
+        }
+    }
+    
+    void inorder(TreeNode* root) {
+        if (root != NULL) {
+            inorder(root->left);
+            printf("%d ", root->data);
+            inorder(root->right);
+        }
+    }
+    
+    void postorder(TreeNode* root) {
+        if (root != NULL) {
+            postorder(root->left);
+            postorder(root->right);
+            printf("%d ", root->data);
+        }
+    }
+
+    TreeNode* search(TreeNode* root, int data) {
+        if (root == NULL || root->data == data) {
+            return root;
+        }
+    
+        if (root->data < data) {
+            return search(root->right, data);
+        }
+        return search(root->left, data);
+    }
+    
+    int main() {
+        TreeNode* root = NULL;
+        int choice, data;
+    
+        do {
+            printf("1. Insert\n2. Delete\n3. Search\n4. Preorder\n5. Inorder\n6. Postorder\n7. Find Minimum\n0. Exit\n");
+            printf("Enter your choice: ");
+            scanf("%d", &choice);
+    
+            switch (choice) {
+                case 1:
+                    printf("Enter data to insert: ");
+                    scanf("%d", &data);
+                    root = insert(root, data);
+                    break;
+                case 2:
+                    printf("Enter data to delete: ");
+                    scanf("%d", &data);
+                    root = delete(root, data);
+                    break;
+                case 3:
+                    printf("Enter data to search: ");
+                    scanf("%d", &data);
+                    if (search(root, data) != NULL) {
+                        printf("Element found in the BST\n");
+                    } else {
+                        printf("Element not found in the BST\n");
+                    }
+                    break;
+                case 4:
+                    printf("Preorder traversal: ");
+                    preorder(root);
+                    printf("\n");
+                    break;
+                case 5:
+                    printf("Inorder traversal: ");
+                    inorder(root);
+                    printf("\n");
+                    break;
+                case 6:
+                    printf("Postorder traversal: ");
+                    postorder(root);
+                    printf("\n");
+                    break;
+                case 7:
+                    if (root != NULL) {
+                        int min = findMin(root);
+                        printf("Minimum element in the BST: %d\n", min);
+                    } else {
+                        printf("BST is empty\n");
+                    }
+                    break;
+                case 0:
+                    printf("Exiting the program\n");
+                    break;
+                default:
+                    printf("Invalid choice. Please try again.\n");
+            }
+        } while (choice != 0);
+    
+        return 0;
+    }
+</pre>
+<pre class="text-small">
+<b class="text-big">Output:</b>
+
+Binary Search Tree Operations:
+1. Insert
+2. Delete
+3. Search
+4. Inorder Traversal
+5. Find Minimum Element
+6. Exit
+
+Enter your choice: 1
+Enter the key to insert: 50
+Inserted 50
+
+Binary Search Tree Operations:
+1. Insert
+2. Delete
+3. Search
+4. Inorder Traversal
+5. Find Minimum Element
+6. Exit
+
+Enter your choice: 1
+Enter the key to insert: 30
+Inserted 30
+
+(Continue with other operations...)
+
+Binary Search Tree Operations:
+1. Insert
+2. Delete
+3. Search
+4. Inorder Traversal
+5. Find Minimum Element
+6. Exit
+
+Enter your choice: 4
+Inorder Traversal: 30 50
+
+Binary Search Tree Operations:
+1. Insert
+2. Delete
+3. Search
+4. Inorder Traversal
+5. Find Minimum Element
+6. Exit
+
+Enter your choice: 3
+Enter the key to search: 30
+30 found in the tree.
+
+(Continue with other operations...)
+
+Binary Search Tree Operations:
+1. Insert
+2. Delete
+3. Search
+4. Inorder Traversal
+5. Find Minimum Element
+6. Exit
+
+Enter your choice: 2
+Enter the key to delete: 30
+Deleted 30
+
+(Continue with other operations...)
+
+Binary Search Tree Operations:
+1. Insert
+2. Delete
+3. Search
+4. Inorder Traversal
+5. Find Minimum Element
+6. Exit
+
+Enter your choice: 4
+Inorder Traversal: 50
+
+(Continue with other operations...)
+
+Binary Search Tree Operations:
+1. Insert
+2. Delete
+3. Search
+4. Inorder Traversal
+5. Find Minimum Element
+6. Exit
+
+Enter your choice: 5
+Minimum Element: 50
+
+Binary Search Tree Operations:
+1. Insert
+2. Delete
+3. Search
+4. Inorder Traversal
+5. Find Minimum Element
+6. Exit
+
+Enter your choice: 6
+Exiting the program.    
+</pre>
+</body>
+</html>

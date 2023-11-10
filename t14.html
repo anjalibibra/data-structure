@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Assignment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+
+<body>
+<pre class="text-small">
+    #include < stdio.h>
+        #include < stdlib.h>
+        
+        struct Node {
+            int data;
+            struct Node* left;
+            struct Node* right;
+        };
+        
+        struct Node* createNode(int data) {
+            struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+            newNode->data = data;
+            newNode->left = NULL;
+            newNode->right = NULL;
+            return newNode;
+        }
+        
+        struct Node* insert(struct Node* root, int data) {
+            if (root == NULL) {
+                return createNode(data);
+            }
+            if (data < root->data) {
+                root->left = insert(root->left, data);
+            } else if (data > root->data) {
+                root->right = insert(root->right, data);
+            }
+            return root;
+        }
+        
+        void postorderTraversal(struct Node* root) {
+            if (root != NULL) {
+                postorderTraversal(root->left);
+                postorderTraversal(root->right);
+                printf("%d ", root->data);
+            }
+        }
+        
+        int main() {
+            int n;
+            printf("Enter the number of elements in the BST: ");
+            scanf("%d", &n);
+        
+            int preorder[n];
+            printf("Enter the elements of the BST in preorder traversal: ");
+            for (int i = 0; i < n; i++) {
+                scanf("%d", &preorder[i]);
+            }
+        
+            struct Node* root = NULL;
+        
+            for (int i = 0; i < n; i++) {
+                root = insert(root, preorder[i]);
+            }
+        
+            printf("Postorder Traversal of the Binary Search Tree: ");
+            postorderTraversal(root);
+            printf("\n");
+        
+            return 0;
+        }        
+</pre>
+<pre class="text-small">
+<b class="text-big">Output:</b>
+Enter the elements of the BST in preorder traversal: 6
+2
+7
+3
+Postorder Traversal of the Binary Search Tree: 3 2 7 6
+</pre>
+</body>
+</html> 

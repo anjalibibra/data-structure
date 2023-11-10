@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <h1>24. ENTER A SENTENCE FROM USER AND THEN ENTER THE WORD AND REPLACE THAT WORD BY ANOTHER WORD.</h1>
+            #include&lt;stdio.h&gt;
+                #include&lt;stdlib.h&gt;
+                #include&lt;string.h&gt;
+                
+                void main()
+                {
+                    char input[50],subs[15],with[15],dub[15];
+                    int i=0,j=0,lenght;
+                    puts("Enter the sentence : ");
+                    gets(input);
+                    puts("Enter the word to be replaced");
+                    gets(subs);
+                    puts("Enter the word you want to replace with");
+                    gets(with);
+                    puts(input);
+                
+                    lenght=strlen(input);
+                    while (lenght&gt;=0)
+                    {
+                        if (input[i]!= ' ')
+                        // it checks if the current character is not a space (' ').
+                        // If it's not a space, it appends the character to the dub array and increments j.
+                        {
+                            dub[j]=input[i];
+                            j++;
+                        }
+                        //working :- 
+                        // It then compares the word in dub with the word to be replaced (subs) using strcmp.
+                        //  If the words match, it prints the replacement word (with), otherwise, it prints the original word. 
+                        if (input[i]==' '|| input[i]=='\0')
+                        {
+                            dub[j]='\0';
+                            if (strcmp(subs,dub)==0) //compare string
+                            {
+                                printf("%s ",with);
+                            }
+                            else
+                            {
+                                printf("%s ",dub);
+                            }
+                            j=0;
+                            //resets j to 0 to start building the next word
+                        }
+                        i++;
+                        //increments i and decrements length to continue processing the next character in the input sentence.
+                        lenght--;
+                    }
+                    
+                }
+        </code>
+    </pre>
+    <h1>output</h1>
+    <pre>
+        Enter the sentence : 
+        I love programming languages like C++ and Java
+        Enter the word to be replaced
+        like
+        Enter the word you want to replace with
+        programming
+        I love progranming languages like C++ and Java
+    </pre>
+</body>
+</html>

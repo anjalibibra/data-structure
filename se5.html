@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>        <code>
+        <h1>
+            5. ENTER A INTEGER ARRAY FROM THE USER, ENTER AN INTEGER VALUE AND PERFORM BINARY SEARCH ALGORITHM THROUGH
+            ITERATION.
+        </h1>
+        #include &lt;stdio.h&gt;
+        
+        int binarySearch(int arr[], int size, int key) {
+            int start = 0;
+            int end = size - 1;
+            
+            while (start &lt;= end) {  
+                int mid = (start + end) / 2;  
+                
+                if (arr[mid] == key) {
+                    return mid;
+                } else if (arr[mid] &lt; key) {
+                    start = mid + 1;  
+                } else {
+                    end = mid - 1;  
+                }
+            }
+            
+            return -1;  
+        }
+        
+        int main() {
+            int arr[30];
+            int size, key, i, temp;
+            
+            printf("Enter the size of the array: ");
+            scanf("%d", &amp;size);
+            
+            printf("Enter the elements of the array (in ascending order):\n");
+            for (i = 0; i &lt; size; i++) {
+                printf("%dth element: ", i);
+                scanf("%d", &amp;arr[i]);
+            }
+            
+            printf("Enter the element to search: ");
+            scanf("%d", &amp;key);
+            
+            temp = binarySearch(arr, size, key);
+            
+            if (temp == -1) {
+                printf("%d Element not found\n", key);
+            } else {
+                printf("%d element is at index %d\n", key, temp);
+            }
+            
+            return 0;
+        }
+                        
+                </code>
+            </pre>
+        </pre>
+        <h1>output</h1>
+        <pre>
+Enter the size of the array: 5
+Enter the elements of the array (in ascending order):
+0th element: 10
+1th element: 20
+2th element: 30
+3th element: 44
+4th element: 49
+Enter the element to search: 30
+30 element is at index 2
+
+        </pre>
+</body>
+</html>

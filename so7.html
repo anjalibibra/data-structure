@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+          
+                <h1> 7. ENTER A INTEGER ARRAY FROM THE USER AND PERFORM MERGE SORT ALGORITHM THROUGH ITERATION. ALSO CALCULATE
+                    THE WORST AND BEST COMPLEXITY WITH EXACT TIME.</h1>
+                #include &lt;stdio.h&gt;
+    
+                    void merge(int arr[], int brr[], int crr[], int l1, int r1) {
+                        int i = 0, j = 0, k = 0;
+                    
+                        while (i &lt; l1 &amp;&amp; j &lt; r1) {
+                            if (brr[i] &lt;= crr[j]) {
+                                arr[k] = brr[i];
+                                i++;
+                            } else {
+                                arr[k] = crr[j];
+                                j++;
+                            }
+                            k++;
+                        }
+                    
+                        while (i &lt; l1) {
+                            arr[k] = brr[i];
+                            i++;
+                            k++;
+                        }
+                    
+                        while (j &lt; r1) {
+                            arr[k] = crr[j];
+                            j++;
+                            k++;
+                        }
+                    }
+                    
+                    void mergeSort(int arr[], int size) {
+                        if (size &lt;= 1) {
+                            return; // Base case: Arrays of size 1 or less are already sorted.
+                        }
+                    
+                        int mid = size / 2;
+                        int left[mid];
+                        int right[size - mid];
+                    
+                        for (int i = 0; i &lt; mid; i++) {
+                            left[i] = arr[i];
+                        }
+                    
+                        for (int i = mid; i &lt; size; i++) {
+                            right[i - mid] = arr[i];
+                        }
+                    
+                        mergeSort(left, mid);
+                        mergeSort(right, size - mid);
+                    
+                        merge(arr, left, right, mid, size - mid);
+                    }
+                    
+                    int main() {
+                        int size;
+                        printf("Enter the size of the array: ");
+                        scanf("%d", &amp;size);
+                    
+                        int arr[50];
+                    
+                        printf("Enter the elements:\n");
+                        for (int i = 0; i &lt; size; i++) {
+                            printf("Element %d: ", i + 1);
+                            scanf("%d", &amp;arr[i]);
+                        }
+                    
+                        mergeSort(arr, size);
+                    
+                        printf("Sorted elements are: ");
+                        for (int i = 0; i &lt; size; i++) {
+                            printf("%d ", arr[i]);
+                        }
+                        printf("\n");
+                    }
+                     
+            </code></pre>
+            <h1>output</h1>
+            <pre>
+Enter the size of the array: 5
+Enter the elements:
+Element 1: 15
+Element 2: 76
+Element 3: 32
+Element 4: 87
+Element 5: 1
+Sorted elements are: 1 15 32 76 87 
+
+            </pre>
+</body>
+</html>

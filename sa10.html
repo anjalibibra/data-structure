@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <h1>10. ENTER THE INFIX EXPRESSION FROM USER AND CONVERT INTO POSTFIX EXPRESSION.</h1>
+            //Infix to postfix
+
+
+#include &lt;stdio.h&gt;
+#include&lt;string.h&gt;
+#include&lt;ctype.h&gt;
+
+int top=-1;
+void push(char stack[],int n,char value){
+     if (top==n-1)
+     printf("overflow condition ");
+    else
+       top++;
+    stack[top]=value;
+  
+}
+char pop(char stack[],int n){
+    char val;
+    if (top==-1)
+       printf("underflow ");
+    else{
+        val=stack[top];
+    
+       //arr[j]=stack[top];
+       top--;}
+    return val;
+}
+int precedence(char ch){
+   if(ch=='/'||ch=='*'){
+      return 4; 
+   }
+   else if(ch=='^'){
+       return 5;
+   }
+   else
+      return 1;
+   
+}
+int main() {
+   char eq[20],arr[20],stack[20];
+   int n=20,k=-1,i,j=0;
+  printf("Enter the equation:");
+  gets(eq);
+  int l= strlen(eq);
+for(i=0;eq[i]!='\0';i++){
+    if(isdigit(eq[i])){
+        arr[j]=eq[i];
+          j++;
+    }
+    else
+    {      k++;
+      
+        if(k==0){
+        push(stack,n,eq[i]);
+        
+            continue;
+        } 
+        else{
+      while(1){
+      if(precedence(eq[i])&gt;precedence(stack[top])||top==-1||eq[i]=='('){
+     push(stack,n,eq[i]);
+               break;
+           }
+           else if(')'){
+           while(stack[top]!='('){
+            arr[j]=pop(stack, n);
+            top--;
+           }
+           }
+          else
+          arr[j]=pop(stack, n);
+          
+           j++;
+        }
+    }
+}
+
+}
+if(eq[i]=='\0'){
+    while(top&gt;=0){
+     arr[j]=pop(stack, n);
+    
+          j++;
+    }
+}
+arr[j]='\0';
+   puts(arr);
+
+    return 0;
+}
+
+        </code>
+    </pre>
+    <h1>output</h1>
+    <pre>
+        
+    </pre>
+</body>
+</html>

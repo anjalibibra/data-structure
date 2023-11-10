@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Assignment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+
+<body>
+  
+<pre class="text-small">
+
+    #include stdio.h&gt;
+    #include stdlib.h&gt;
+    
+    struct TreeNode {
+        int key;
+        struct TreeNode* left;
+        struct TreeNode* right;
+    };
+    
+    struct TreeNode* createNode(int key) {
+        struct TreeNode* newNode = (struct TreeNode*)malloc(sizeof(struct TreeNode));
+        newNode-&gt;key = key;
+        newNode-&gt;left = NULL;
+        newNode-&gt;right = NULL;
+        return newNode;
+    }
+    
+    struct TreeNode* insert(struct TreeNode* root, int key) {
+        if (root == NULL) {
+            return createNode(key);
+        }
+    
+        if (key &lt; root-&gt;key) {
+            root-&gt;left = insert(root-&gt;left, key);
+        }
+        else if (key &gt; root-&gt;key) {
+            root-&gt;right = insert(root-&gt;right, key);
+        }
+    
+        return root;
+    }
+    
+    struct TreeNode* search(struct TreeNode* root, int key) {
+        if (root == NULL || root-&gt;key == key) {
+            return root;
+        }
+    
+        if (key &lt; root-&gt;key) {
+            return search(root-&gt;left, key);
+        }
+        return search(root-&gt;right, key);
+    }
+    
+    void inorder(struct TreeNode* root) {
+        if (root != NULL) {
+            inorder(root-&gt;left);
+            printf("%d ", root-&gt;key);
+            inorder(root-&gt;right);
+        }
+    }
+    
+    struct TreeNode* findMaxValueNode(struct TreeNode* node) {
+        struct TreeNode* current = node;
+        while (current &amp;&amp; current-&gt;right != NULL) {
+            current = current-&gt;right;
+        }
+        return current;
+    }
+    
+    struct TreeNode* findMinValueNode(struct TreeNode* node) {
+        struct TreeNode* current = node;
+        while (current &amp;&amp; current-&gt;left != NULL) {
+            current = current-&gt;left;
+        }
+        return current;
+    }
+    
+    struct TreeNode* findInorderPredecessor(struct TreeNode* root, int key) {
+        struct TreeNode* targetNode = search(root, key);
+        if (targetNode == NULL) {
+            return NULL;
+        }
+    
+        if (targetNode-&gt;left != NULL) {
+            return findMaxValueNode(targetNode-&gt;left);
+        }
+    
+        struct TreeNode* predecessor = NULL;
+        struct TreeNode* current = root;
+    
+        while (current != targetNode) {
+            if (targetNode-&gt;key &gt; current-&gt;key) {
+                predecessor = current;
+                current = current-&gt;right;
+            } else {
+                current = current-&gt;left;
+            }
+        }
+    
+        return predecessor;
+    }
+    
+    struct TreeNode* findInorderSuccessor(struct TreeNode* root, int key) {
+        struct TreeNode* targetNode = search(root, key);
+        if (targetNode == NULL) {
+            return NULL;
+        }
+    
+        if (targetNode-&gt;right != NULL) {
+            return findMinValueNode(targetNode-&gt;right);
+        }
+    
+        struct TreeNode* successor = NULL;
+        struct TreeNode* current = root;
+    
+        while (current != targetNode) {
+            if (targetNode-&gt;key &lt; current-&gt;key) {
+                successor = current;
+                current = current-&gt;left;
+            } else {
+                current = current-&gt;right;
+            }
+        }
+    
+        return successor;
+    }
+    
+    int main() {
+        struct TreeNode* root = NULL;
+        int choice, key;
+        struct TreeNode* inorderPred, *inorderSucc;
+    
+        while (1) {
+            printf("\nBinary Search Tree Operations:\n");
+            printf("1. Insert\n");
+            printf("2. Find Inorder Predecessor\n");
+            printf("3. Find Inorder Successor\n");
+            printf("4. Inorder Traversal\n");
+            printf("5. Exit\n");
+            printf("Enter your choice: ");
+            scanf("%d", &amp;choice);
+    
+            switch (choice) {
+                case 1:
+                    printf("Enter the key to insert: ");
+                    scanf("%d", &amp;key);
+                    root = insert(root, key);
+                    break;
+                case 2:
+                    printf("Enter the key to find its Inorder Predecessor: ");
+                    scanf("%d", &amp;key);
+                    inorderPred = findInorderPredecessor(root, key);
+                    if (inorderPred != NULL) {
+                        printf("Inorder Predecessor: %d\n", inorderPred-&gt;key);
+                    } else {
+                        printf("Inorder Predecessor not found.\n");
+                    }
+                    break;
+                case 3:
+                    printf("Enter the key to find its Inorder Successor: ");
+                    scanf("%d", &amp;key);
+                    inorderSucc = findInorderSuccessor(root, key);
+                    if (inorderSucc != NULL) {
+                        printf("Inorder Successor: %d\n", inorderSucc-&gt;key);
+                    } else {
+                        printf("Inorder Successor not found.\n");
+                    }
+                    break;
+                case 4:
+                    printf("Inorder Traversal: ");
+                    inorder(root);
+                    printf("\n");
+                    break;
+                case 5:
+                    exit(0);
+                default:
+                    printf("Invalid choice. Please try again.\n");
+            }
+        }
+    
+        return 0;
+    }
+</pre>
+<pre class="text-small">
+<b class="text-big">Output:</b>
+
+Binary Search Tree Operations:
+1. Insert
+2. Find Inorder Predecessor
+3. Find Inorder Successor
+4. Inorder Traversal
+5. Exit
+Enter your choice: 1
+Enter the key to insert: 50
+
+Binary Search Tree Operations:
+1. Insert
+2. Find Inorder Predecessor
+3. Find Inorder Successor
+4. Inorder Traversal
+5. Exit
+Enter your choice: 1
+Enter the key to insert: 30
+
+(Continue inserting more values...)
+
+Binary Search Tree Operations:
+1. Insert
+2. Find Inorder Predecessor
+3. Find Inorder Successor
+4. Inorder Traversal
+5. Exit
+Enter your choice: 2
+Enter the key to find its Inorder Predecessor: 50
+Inorder Predecessor: 40
+
+Binary Search Tree Operations:
+1. Insert
+2. Find Inorder Predecessor
+3. Find Inorder Successor
+4. Inorder Traversal
+5. Exit
+Enter your choice: 3
+Enter the key to find its Inorder Successor: 30
+Inorder Successor: 40
+
+Binary Search Tree Operations:
+1. Insert
+2. Find Inorder Predecessor
+3. Find Inorder Successor
+4. Inorder Traversal
+5. Exit
+Enter your choice: 4
+Inorder Traversal: 30 40 50
+</pre>
+</body>
+</html>

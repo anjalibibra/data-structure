@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+                <h1>3. ENTER A INTEGER ARRAY FROM THE USER AND PERFORM BUBBLE SORT ALGORITHM THROUGH ITERATION. ALSO CALCULATE
+                    THE WORST AND BEST COMPLEXITY WITH EXACT TIME.</h1>
+                    #include &lt;stdio.h&gt;
+                        #include &lt;time.h&gt;
+                        
+                        // Function to perform Bubble Sort
+                        int bubble(int ary[], int size)
+                        {
+                            int i,j,temp;
+                            for ( i = size-1; i &gt;0; i--)
+                            {
+                                for ( j= 0; j &lt;= i; j++)
+                                {
+                                    if (ary[j]&gt;ary[j+1])
+                                    {
+                                        temp=ary[j];
+                                        ary[j]=ary[j+1];
+                                        ary[j+1]=temp;
+                                    }
+                                    
+                                }
+                                
+                            }
+                            return 0;
+                            
+                        }
+                        
+                        int main() {
+                            int i,n;
+                            printf("Enter the number of elements in the array: ");
+                            scanf("%d", &n);
+                        
+                            int arr[n];
+                            printf("Enter %d integers:\n", n);
+                            for (i = 0; i &lt; n; i++) {
+                                printf("Enter %d value : ",i+1);
+                                scanf("%d", &arr[i]);
+                            }
+                        
+                            // Record the start time
+                            clock_t start = clock();
+                        
+                            // Perform Bubble Sort
+                            bubble(arr, n);
+                        
+                            // Record the end time
+                            clock_t end = clock();
+                        
+                            printf("Sorted array using Bubble Sort:\n");
+                            for (i = 0; i &lt; n; i++) {
+                                printf("%d ", arr[i]);
+                            }
+                            printf("\n");
+                        
+                            // Calculate the time taken in seconds
+                            double timeTaken = ((double)(end - start)) / CLOCKS_PER_SEC;
+                            printf("Time taken: %f seconds\n", timeTaken);
+                        
+                            return 0;
+                        }
+            </code>
+        </pre>
+        <h1>output</h1>
+        <pre>
+            Enter the number of elements in the array: 5
+Enter 5 integers:
+Enter 1 value : 13
+Enter 2 value : 1
+Enter 3 value : 23
+Enter 4 value : 27
+Enter 5 value : 89
+Sorted array using Bubble Sort:
+1 0 13 23 27 
+Time taken: 0.000001 seconds
+
+        </pre>
+</body>
+</html>

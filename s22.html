@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <h1> ENTER THE STRING FROM THE USER, SORT THE STRING IN ASCENDING ORDER AND PRINT IT.</h1>
+            #include&lt;stdio.h&gt;
+                #include&lt;conio.h&gt;
+                void main(){
+                char str[20],temp;
+                int i,j,len=0;
+                clrscr();
+                printf("Enter a string: ");
+                gets(str);
+                for(i=0;str[i];i++){
+                 len++;
+                 }
+                printf("Length of the string: %d",len);
+                for(i=0;i&lt;len;i++){
+                 for(j=i+1;j&lt;len;j++){
+                   if(str[i]&gt;str[j]){
+                     temp=str[i];
+                     str[i]=str[j];
+                     str[j]=temp;
+                   }
+                  }
+                 }
+                printf("Sorted string: ");
+                printf("%s",str);
+                getch();
+                } 
+            
+        </code>
+    </pre>
+    <h1>output</h1>
+    <pre>
+        <code>
+            Enter a string: hello world
+            Length of the string: 11
+            Sorted string: ehllo wrld
+        </code>
+    </pre>
+
+    
+</body>
+</html>

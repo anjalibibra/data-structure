@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Assignment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+
+<body>
+  
+<pre class="text-small">
+    #include stdio.h>
+    #include stdlib.h>
+    
+    struct TreeNode {
+        int data;
+        struct TreeNode* left;
+        struct TreeNode* right;
+    };
+    
+    struct TreeNode* createNode(int data) {
+        struct TreeNode* newNode = (struct TreeNode*)malloc(sizeof(struct TreeNode));
+        newNode->data = data;
+        newNode->left = NULL;
+        newNode->right = NULL;
+        return newNode;
+    }
+    
+    struct TreeNode* constructBST(int postorder[], int n) {
+        if (n <= 0) {
+            return NULL;
+        }
+        
+        struct TreeNode* root = createNode(postorder[n - 1]);
+        int i;
+        
+        for (i = n - 2; i >= 0; i--) {
+            if (postorder[i] < root->data) {
+                break;
+            }
+        }
+        
+        root->right = constructBST(postorder + i + 1, n - i - 1);
+        root->left = constructBST(postorder, i + 1);
+        
+        return root;
+    }
+    
+    void inorderTraversal(struct TreeNode* root) {
+        if (root != NULL) {
+            inorderTraversal(root->left);
+            printf("%d ", root->data);
+            inorderTraversal(root->right);
+        }
+    }
+    
+    int main() {
+        int n, i;
+    
+        printf("Enter the number of elements in the postorder traversal: ");
+        scanf("%d", &n);
+    
+        if (n <= 0) {
+            printf("Invalid input.\n");
+            return 1;
+        }
+    
+        int* postorder = (int*)malloc(n * sizeof(int));
+    
+        printf("Enter the elements in postorder traversal:\n");
+        for (i = 0; i < n; i++) {
+            scanf("%d", &postorder[i]);
+        }
+    
+        struct TreeNode* root = constructBST(postorder, n);
+    
+        printf("Inorder Traversal of Constructed BST: ");
+        inorderTraversal(root);
+        printf("\n");
+    
+        free(postorder);
+        return 0;
+    }
+</pre>
+<pre class="text-small">
+<b class="text-big">Output:</b>
+Enter the number of elements in the postorder traversal: 7
+Enter the elements in postorder traversal:
+20
+40
+30
+60
+80
+70
+50
+Inorder Traversal of Constructed BST: 20 30 40 50 60 70 80                        
+</pre>
+</body>
+</html>

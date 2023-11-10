@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            
+                <h1> 3. CREATE A STACK IMPLEMENTING THE OPERATIONS ON AN INTEGER NODES (DYNAMICALLY) (PUSH, POP, PEEK, ISEMPTY,
+                    ISFULL)</h1>
+                //Stack using Dynamic memory allocation
+    #include&lt;stdio.h&gt;
+    #include&lt;conio.h&gt;
+    #include&lt;stdlib.h&gt;
+    struct stack{
+      int data;
+      struct stack *next;
+    };
+    typedef struct stack node;
+    node *start=NULL,*nn;
+    
+    void push(int value){
+    if(start == NULL){
+    start=(node*)malloc(sizeof(node));
+    start-&gt;data=value;
+    start-&gt;next=NULL;
+    printf("\nValue has been inserted for the 1st time");
+    return;
+    }
+    else{
+    nn=(node*)malloc(sizeof(node));
+    if(nn != NULL){
+      nn-&gt;data=value;
+      nn-&gt;next=start;
+      start=nn;
+      printf("\nValue has been inserted ");
+      }
+      else{
+      printf("\nStack is already full....");
+      }
+     }
+    }
+    void pop(){
+    if(start==NULL){
+    printf("\nStack is empty");
+    return;
+    }
+    start=start-&gt;next;
+    printf("\nValue has been deleted.");
+    }
+    void display(){
+    if(start==NULL){
+    printf("\nStack is empty");
+    return;
+    }
+    node *items=start;
+    
+    while(items != NULL){
+    printf("-&gt;%d",items-&gt;data);
+    items=items-&gt;next;
+    }
+    }
+    void main(){
+    int ch,value;
+    clrscr();
+    printf("\nPress 1:Insert a value.");
+    printf("\nPress 2:Delete a value.");
+    printf("\nPress 3:Display value.");
+    printf("\nPress 4:Exit the program.");
+    while(1){
+    printf("\nEnter your choice:");
+    scanf("%d",&amp;ch);
+    
+    switch(ch){
+       case 1:printf("\nEnter value to insert:");
+       scanf("%d",&amp;value);
+       push(value);
+       break;
+       case 2:pop();
+       break;
+       case 3:display();
+       break;
+       case 4:printf("\nCode has been terminated.");
+       exit(0);
+       default:printf("\nInvalid Choice..");
+      }
+     }
+    getch();
+    }
+          
+        </code>
+    </pre>
+    <h1>output</h1>
+    <pre>
+        Press 1:Insert a value.
+        Press 2:Delete a value.
+        Press 3:Display value.
+        Press 4:Exit the program.
+        Enter your choice:1
+        Enter value to insert:34
+        Value has been inserted for the 1st time
+        Enter your choice:1
+        Enter value to insert:45
+        Value has been inserted 
+        Enter your choice:1
+        Enter value to insert:89
+        Value has been inserted 
+        Enter your choice:2
+        Value has been deleted.
+        Enter your choice:3
+        ->45->34
+        Enter your choice:4
+        Code has been terminated.
+        </pre>
+</body>
+</html>

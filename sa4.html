@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+         <h1>CREATE A STACK IMPLEMENTING THE OPERATIONS ON THE CHARACTERS NODES (DYNAMICALLY) (PUSH, POP, PEEK,
+            ISEMPTY, ISFULL)</h1>
+            #include &lt;stdio.h&gt;
+            #include &lt;stdlib.h&gt;
+                        
+            struct stack {
+                char data;
+                struct stack* next;
+            };
+            
+            typedef struct stack node;
+            
+            node* start = NULL, * nn;
+            
+            void push(char value) {
+                if (start == NULL) {
+                    start = (node*)malloc(sizeof(node));
+                    start-&gt;data = value;
+                    start-&gt;next = NULL;
+                    printf("\nValue has been inserted for the 1st time");
+                    return;
+                }
+                else {
+                    nn = (node*)malloc(sizeof(node));
+                    if (nn != NULL) {
+                        nn-&gt;data = value;
+                        nn-&gt;next = start;
+                        start = nn;
+                        printf("\nValue has been inserted");
+                    }
+                    else {
+                        printf("\nStack is already full....");
+                    }
+                }
+            }
+            
+            char pop() {
+                if (start == NULL) {
+                    printf("\nStack is empty");
+                    return '\0'; // Return a default value to indicate an empty stack
+                }
+                char value = start-&gt;data;
+                start = start-&gt;next;
+                printf("\nValue has been deleted.");
+                return value;
+            }
+            
+            int isEmpty() {
+                if (start == NULL) {
+                    printf("\nStack is empty");
+                    return 1; // Return 1 to indicate an empty stack
+                }
+                else {
+                    printf("\nStack is not empty yet");
+                    return 0; // Return 0 to indicate a non-empty stack
+                }
+            }
+            
+            void display() {
+                if (start == NULL) {
+                    printf("\nStack is empty");
+                    return;
+                }
+                node* items = start;
+            
+                printf("Stack: ");
+                while (items != NULL) {
+                    printf("%c -&gt; ", items-&gt;data);
+                    items = items-&gt;next;
+                }
+                printf("NULL\n");
+            }
+            
+            int main() {
+                int ch;
+                char value;
+            
+                printf("Press 1: Insert a character.\n");
+                printf("Press 2: Delete a character.\n");
+                printf("Press 3: Display stack.\n");
+                printf("Press 4: Check if empty.\n");
+                printf("Press 5: Exit the program.\n");
+            
+                while (1) {
+                    printf("\nEnter your choice: ");
+                    scanf("%d", &amp;ch);
+            
+                    switch (ch) {
+                    case 1:
+                        printf("Enter character to insert: ");
+                        scanf(" %c", &amp;value); 
+                        push(value);
+                        break;
+                    case 2:
+                        value = pop();
+                        if (value != '\0') {
+                            printf("Popped value: %c\n", value);
+                        }
+                        break;
+                    case 3:
+                        display();
+                        break;
+                    case 4:
+                        if (isEmpty()) {
+                            printf("\nStack is empty.\n");
+                        }
+                        else {
+                            printf("\nStack is not empty.\n");
+                        }
+                        break;
+                    case 5:
+                        printf("\nCode has been terminated.\n");
+                        exit(0);
+                    default:
+                        printf("\nInvalid Choice.\n");
+                    }
+                }
+            
+                return 0;
+            }
+                        
+               
+    </code>
+    </pre>
+</pre>
+<h1>output</h1>
+<pre>
+    Press 1: Insert a character.
+    Press 2: Delete a character.
+    Press 3: Display stack.
+    Press 4: Check if empty.
+    Press 5: Exit the program.
+    
+    Enter your choice: 1
+    Enter character to insert: w
+    Value has been inserted for the 1st time
+    Enter your choice: 2
+    Value has been deleted.Popped value: w
+    
+    Enter your choice: 1
+    Enter character to insert: t
+    Value has been inserted for the 1st time
+    Enter your choice: 3
+    Stack: t -> NULL
+    
+    Enter your choice: 4
+    Stack is not empty yet
+    Stack is not empty.
+    
+    Enter your choice: 5
+    Code has been terminated.
+    
+    </pre>
+</body>
+</html>

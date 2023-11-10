@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <h1>11. ENTER THE STRING FROM USER AND CHECK ITS PALINDROME OR NOT?</h1>
+            #include&lt;stdio.h&gt;
+                #include&lt;string.h&gt;
+            
+                void main()
+                {
+                    char str[100];
+                    char str2[100];
+                    printf("enter any string");
+                    gets(str);
+                    strcpy(str2,str);
+                    strrev(str);
+                    if(strcmp(str,str2)==0)
+                    {
+                    printf("PALINDROME");
+                    }
+                    else{
+                        printf("NOT A PALINDROME");
+                    }
+                }
+        </code>
+    </pre>
+    <h1>output</h1>
+    <pre>
+        <code>
+            enter any string
+            abcba
+            NOT A PALINDROME
+        </code>
+    </pre>
+        </code>
+    </pre>
+</body>
+</html>

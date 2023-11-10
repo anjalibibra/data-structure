@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>        <code>
+        <H1>10. ENTER THE STRING FROM USER, ENTER THE INDEX NUMBER AND PRINT CHARACTER PRESENT ON THAT INDEX ?</H1>
+        #include &lt;stdio.h&gt;
+        
+        int main() {
+        char str1[50];
+        char ch;
+        int len = 0,index;;
+        
+         printf("Enter a string: ");
+        scanf("%s", str1);
+        
+        while (str1[len] != '\0') {
+            len++;
+        }
+        printf("Length of the entered string is: %d\n", len);
+        
+         printf("Enter an index:(It should be between 0 and string length (i.e %d))",len-1);
+        scanf("%d", &amp;index);
+        
+         if (index &gt;= 0 &amp;&amp; index &lt; len) {
+            printf("Character at index %d: %c\n", index, str1[index]);
+        } else {
+            printf("Invalid index. It should be between 0 and string length (i.e %d).\n", len - 1);
+        }
+        }
+                      
+                </code>
+            </pre>
+            <h1>output</h1>
+    <pre>
+Enter a string: anjali
+Length of the entered string is: 6
+Enter an index:(It should be between 0 and string length (i.e 5))3
+Character at index 3: a
+
+    </pre>
+</body>
+</html>

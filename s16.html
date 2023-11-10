@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <h1>16. ENTER THE STRING FROM THE USER, ALSO ENTER A CHARACTER AND PRINT THE INDEX OF THE CHARACTER IF IT IS
+                EXIST IN THE STRING ELSE PRINT -1.</h1>
+            #include&lt;stdio.h&gt;
+                #include&lt;string.h&gt;
+                
+                int main()
+                {
+                     char str[100];
+                     char str2;
+                     int i ,len;
+                     int bound=-1;
+                     printf("Enter a string:  ");
+                     gets(str);
+                     printf("enter a chracter:  ");
+                     scanf("%c",&str2);
+                     len=strlen(str)-1;
+                     for(i=0;i&lt;=len;i++)
+                     {
+                        if(str[i]==str2)
+                        {
+                            printf("FOUND , it exist at bound number %d \n: " ,i);
+                            bound = bound +1;
+                        }
+                     }
+                     if(bound==-1)
+                     {
+                        printf("NOT FOUND , it does not exist");
+                     }
+                }
+        </code>
+    </pre>
+    <h1>output</h1>
+    <pre>
+        <code>
+             Enter a string: hello world
+             enter a chracter: l
+             FOUND , it exist at bound number 3
+        </code>
+    </pre>
+</body>
+    </pre>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>        <code>
+<h1> 1. ENTER A INTEGER ARRAY FROM THE USER, ENTER AN INTEGER VALUE AND PERFORM LINEAR SEARCH ALGORITHM THROUGH
+    ITERATION.</h1>
+        #include&lt;stdio.h&gt;
+       int LinearSearch(int arr[],int size,int key){
+           int i;
+           for(i=0;i&lt;size;i++){
+               if(arr[i] == key){
+                   return i;
+                   break;
+               }
+           }
+           return 0;
+       }
+       void main(){
+           int arr[20],size,temp,key,i;
+           printf("Enter the size of the array: ");
+           scanf("%d",&amp;size);
+           printf("Enter array elements: \n");
+           for(i=0;i&lt;size;i++){
+               printf("Enter %dth element:-",i);
+               scanf("%d",&amp;arr[i]);
+           }
+           printf("Enter the element to search: ");
+           scanf("%d",&amp;key);
+           
+           temp=LinearSearch(arr,size,key);
+           if(temp == 0){
+               printf("*****%d element Not found****",key);
+           }
+           else{
+               printf("%d element is on %dth Index.",key,temp);
+           }
+       }
+               </code>
+           </pre>
+           <h1>output</h1>
+           <pre>
+Enter the size of the array: 5
+Enter array elements: 
+Enter 0th element:-12
+Enter 1th element:-44
+Enter 2th element:-55
+Enter 3th element:-11
+Enter 4th element:-23
+Enter the element to search: 11
+11 element is on 3th Index.
+           </pre>
+</body>
+</html>
